@@ -2,23 +2,23 @@ package com.model;
 
 import java.util.Date;
 
-/**
- * @author Abdullah
+ /**
+ * @author Jacob
  * @Description:
  * @Version 1.0
- * @Date: Create in 上午10:59 2017/2/8
- * @Modified by
  */
+
 public class User {
     private Long id;
-    private String userName;
-    private String userPhone;
-    private String userEmail;
+    private int t_id;
     private String userPwd;
-    private String pwdSalt;
-    private Date createTime;
-    private Date modifyTime;
-    private Short isDelete;
+    private String userName;
+    private String userGender;
+    private String userEmail;
+    private String userPhone;
+    private String userAddress;
+    private Date Time;
+
 
     public Long getId() {
         return id;
@@ -28,28 +28,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public int getT_id() {
+        return t_id;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserPhone() {
-        return userPhone;
-    }
-
-    public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setT_id(int t_id) {
+        this.t_id = t_id;
     }
 
     public String getUserPwd() {
@@ -60,35 +44,51 @@ public class User {
         this.userPwd = userPwd;
     }
 
-    public String getPwdSalt() {
-        return pwdSalt;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setPwdSalt(String pwdSalt) {
-        this.pwdSalt = pwdSalt;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public String getUserGender() {
+        return userGender;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setUserGender(String userGender) {
+        this.userGender = userGender;
     }
 
-    public Date getModifyTime() {
-        return modifyTime;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
-    public Short getIsDelete() {
-        return isDelete;
+    public String getUserPhone() {
+        return userPhone;
     }
 
-    public void setIsDelete(Short isDelete) {
-        this.isDelete = isDelete;
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    public Date getTime() {
+        return Time;
+    }
+
+    public void setTime(Date time) {
+        Time = time;
     }
 }

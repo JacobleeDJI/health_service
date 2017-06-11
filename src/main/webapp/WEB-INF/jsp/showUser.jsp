@@ -13,5 +13,30 @@
         邮箱：${user.userEmail}<br>
     </c:forEach>
 </c:if>
+
+<c:if test="${!empty users}">
+        姓名：${users.userName}&nbsp;&nbsp;
+        手机号：${users.userPhone}&nbsp;&nbsp;
+        邮箱：${users.userEmail}<br>
+</c:if>
+
+<c:if test="${!empty userN}">
+姓名：${userN.userName}&nbsp;&nbsp;
+手机号：${userN.userPhone}&nbsp;&nbsp;
+邮箱：${userN.userEmail}<br>
+</c:if>
+
+<c:if test="${!empty userP}">
+    姓名：${userP.userName}&nbsp;&nbsp;
+    手机号：${userP.userPhone}&nbsp;&nbsp;
+    邮箱：${userP.userEmail}<br>
+</c:if>
+
+<c:if test="${!empty user}">
+    id：${user.id}&nbsp;&nbsp;
+    电话：${user.userPhone}&nbsp;&nbsp;
+    密码：${user.userPwd}<br>
+</c:if>
+
 </body>
 </html>
