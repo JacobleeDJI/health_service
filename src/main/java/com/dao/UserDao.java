@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.model.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,8 +15,8 @@ import java.util.List;
 public interface UserDao {
     User selectUserById(Long userId);//通过ID查询用户信息-已实现
     User selectUserByname(String userName);//通过姓名查询用户信息-已实现
-    User selectUserByPhone(String userPhone);//通过电话查询用户信息
+    User selectUserByPhone(String userPhone);//通过电话查询用户信息-已实现
     List<User> selectAllUser();//查询所有的用户信息-已实现
-
-    Long insertUser(User user);
+    User queryForLogin(@Param("userPhone") String userPhone, @Param("userPwd") String userPwd);//通过查询数据库验证用户登录
+    Long insertUser(User user);//注册用户-已实现
 }

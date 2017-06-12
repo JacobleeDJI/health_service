@@ -39,4 +39,8 @@ public class UserServiceImpl implements UserService {
 
     public Long getinsertUser(User user) {return userDao.insertUser(user); }
 
+    public User queryForLogin(String userPhone, String userPwd) {
+        return userDao.queryForLogin(userPhone, userPwd);
+    }
+
 }

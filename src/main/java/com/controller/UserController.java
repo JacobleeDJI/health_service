@@ -53,24 +53,26 @@ public class UserController {
         return "showUser";
     }
 
+//  --------------------------Health App 接口-----------------------------
+
 //  RESTFUL API
 //  模块：用户模块
 //  接口名：isRepeatLoginName
 //  返回值：boolean
-    @RequestMapping(value = "/isRepeatLoginName/{userPhone}", method = RequestMethod.GET, produces = {"application/jason; charset=UTF-8"})
+    @RequestMapping(value = "/isRepeatLoginName", method = RequestMethod.GET, produces = {"application/jason; charset=UTF-8"})
     @ResponseBody
-    public boolean isRepeatLoginName(Model model, @PathVariable String userPhone) {
+    public boolean isRepeatLoginName(Model model, String userPhone) {
         User userByPhone = userService.getUserByPhone(userPhone);
         if (userByPhone == null) {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
 //  RESTFUL API
 //  模块：用户模块
-//  接口名：doSignIn
-//  返回值：String
+//  接口名：doSignUp
+//  返回值：Long
     @RequestMapping(value = "/doSignUp", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public Long insertUser(@ModelAttribute User user) {
@@ -79,6 +81,22 @@ public class UserController {
         Long loginUser = userService.getinsertUser(user);
         System.out.println("注册后的id为：" + user.getId());
         return user.getId();
+    }
+
+//  RESTFUL API
+//  模块：用户模块
+//  接口名：doSignIn
+//  返回值：int
+    @RequestMapping(value = "/doSignIn", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public int login(String userPhone, String userPwd, Model model) {
+        log.info("登录");
+        User u = userService.queryForLogin(userPhone, userPwd);
+        if (u != null) {
+            model.addAttribute("Login_user", u);
+            return 200;
+        }
+        return 101;
     }
 
 }
