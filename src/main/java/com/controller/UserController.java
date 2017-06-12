@@ -89,7 +89,7 @@ public class UserController {
 //  返回值：int
     @RequestMapping(value = "/doSignIn", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public int login(String userPhone, String userPwd, Model model) {
+    public int login(Model model,String userPhone, String userPwd) {
         log.info("登录");
         User u = userService.queryForLogin(userPhone, userPwd);
         if (u != null) {
@@ -99,4 +99,17 @@ public class UserController {
         return 101;
     }
 
+//  RESTFUL API
+//  模块:用户模块
+//  接口名:getIdByPhone
+//  返回值:String
+    @RequestMapping(value = "/getIdByPhone", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Long getIdByPhone(Model model, String userPhone) {
+        User usergetId = userService.getUserByPhone(userPhone);
+        if (usergetId == null) {
+            return null;
+        }
+        return usergetId.getId();
+    }
 }
