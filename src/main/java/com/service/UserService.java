@@ -15,7 +15,6 @@ public interface UserService {
     User getUserById(Long userId);
     User getUserByname(String UserName);
     User queryForLogin(String userPhone, String userPwd);
-
     Long getinsertUser(User user);
 
 }

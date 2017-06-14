@@ -4,7 +4,6 @@ import com.model.User;
 import com.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -55,48 +54,61 @@ public class UserController {
 
 //  --------------------------Health App 接口-----------------------------
 
-//  RESTFUL API
-//  模块：用户模块
-//  接口名：isRepeatLoginName
-//  返回值：boolean
+   /*
+    RESTFUL API
+    模块：用户模块
+    接口名：isRepeatLoginName
+    返回值：boolean/status都为String
+   */
     @RequestMapping(value = "/isRepeatLoginName", method = RequestMethod.GET, produces = {"application/jason; charset=UTF-8"})
     @ResponseBody
-    public boolean isRepeatLoginName(Model model, String userPhone) {
+    public Map<String, String> isRepeatLoginName(Model model, String userPhone) {
+        log.info("检查用户名是否重复");
         User userByPhone = userService.getUserByPhone(userPhone);
+        Map<String, String> map = new HashMap<String, String>();
         if (userByPhone == null) {
-            return false;
+            map.put("status", "200");
+            map.put("result", "false");
+            return map;
         }
-        return true;
+        map.put("status", "400");
+        map.put("result", "true");
+        return map;
     }
+
 
 //  RESTFUL API
 //  模块：用户模块
 //  接口名：doSignUp
-//  返回值：Long
+//  返回值：userID/Status都为Long
     @RequestMapping(value = "/doSignUp", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public Long insertUser(@ModelAttribute User user) {
+    public Map<String, Long> insertUser(@ModelAttribute User user) {
         log.info("注册");
-        Map<String, String> result = new HashMap<String, String>();
-        Long loginUser = userService.getinsertUser(user);
-        System.out.println("注册后的id为：" + user.getId());
-        return user.getId();
+        Long loginUser  =userService.getinsertUser(user);
+        Map<String, Long> result = new HashMap<String, Long>();
+        result.put("status", new Long(200));
+        result.put("userId", user.getId());
+        return result;
     }
 
 //  RESTFUL API
 //  模块：用户模块
 //  接口名：doSignIn
-//  返回值：int
+//  返回值：status状态码为String
     @RequestMapping(value = "/doSignIn", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public int login(Model model,String userPhone, String userPwd) {
+    public Map<String, String> login(Model model,String userPhone, String userPwd) {
         log.info("登录");
         User u = userService.queryForLogin(userPhone, userPwd);
+        Map<String,String> map = new HashMap<String, String>();
         if (u != null) {
             model.addAttribute("Login_user", u);
-            return 200;
+            map.put("status", "200");
+            return map;
         }
-        return 101;
+        map.put("status", "400");
+        return map;
     }
 
 //  RESTFUL API
