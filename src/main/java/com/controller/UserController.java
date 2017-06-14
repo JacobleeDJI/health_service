@@ -117,11 +117,15 @@ public class UserController {
 //  返回值:String
     @RequestMapping(value = "/getIdByPhone", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public Long getIdByPhone(Model model, String userPhone) {
+    public Map<String, Long> getIdByPhone(Model model, String userPhone) {
         User usergetId = userService.getUserByPhone(userPhone);
+        Map<String, Long> map = new HashMap<String, Long>();
         if (usergetId == null) {
-            return null;
+            map.put("status", new Long(400));
+            return map;
         }
-        return usergetId.getId();
+        map.put("userId", usergetId.getId());
+        map.put("status", new Long(200));
+        return map;
     }
 }
