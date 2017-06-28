@@ -19,6 +19,10 @@
         <result column="value" property="s_value" jdbcType="VARCHAR"/>
     </resultMap>
 
+    <select id="selectValueByName" parameterType="String" resultMap="t_sys">
+        SELECT value FROM sys_param WHERE name = #{s_name}
+    </select>
+
     <select id="selectUserById" parameterType="int" resultMap="t_user">
         SELECT * FROM user WHERE id = #{userId}
     </select>
