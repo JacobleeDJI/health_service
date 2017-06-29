@@ -131,3 +131,7 @@ public class UserController {
     }
 }
 
+//  RESULTFUL API
+//  模块：用户模块
+//  接口名：getProfile
+//  返回值：tb_user中除密码外的所有字段的值
