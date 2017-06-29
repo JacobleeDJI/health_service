@@ -4,31 +4,31 @@ package com.model;
  * Created by jacob on 2017/6/28.
  */
 public class Sys {
-    private int id;
-    private String name;
-    private String value;
+    private int s_id;
+    private String s_name;
+    private String s_value;
 
-    public int getId() {
-        return id;
+    public int getS_id() {
+        return s_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setS_id(int s_id) {
+        this.s_id = s_id;
     }
 
-    public String getName() {
-        return name;
+    public String getS_name() {
+        return s_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setS_name(String s_name) {
+        this.s_name = s_name;
     }
 
-    public String getValue() {
-        return value;
+    public String getS_value() {
+        return s_value;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setS_value(String s_value) {
+        this.s_value = s_value;
     }
 }

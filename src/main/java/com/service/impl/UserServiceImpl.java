@@ -1,6 +1,7 @@
 package com.service.impl;
 
 import com.dao.UserDao;
+import com.model.Sys;
 import com.model.User;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,3 +45,4 @@ public class UserServiceImpl implements UserService {
     }
 
 }
+

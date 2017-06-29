@@ -19,7 +19,6 @@ public class User {
     private String userAddress;
     private Date Time;
 
-
     public Long getId() {
         return id;
     }
