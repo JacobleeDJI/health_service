@@ -106,6 +106,7 @@ public class UserController {
         if (u != null) {
             model.addAttribute("Login_user", u);
             map.put("status", "200");
+            map.put("userType", (String)u.getT_id());
             return map;
         }
         map.put("status", "400");
@@ -135,3 +136,6 @@ public class UserController {
 //  模块：用户模块
 //  接口名：getProfile
 //  返回值：tb_user中除密码外的所有字段的值
+//    @RequestMapping(value = "getProfile", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+//    @ResponseBody
+//    public
