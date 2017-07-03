@@ -106,7 +106,6 @@ public class UserController {
         if (u != null) {
             model.addAttribute("Login_user", u);
             map.put("status", "200");
-            map.put("userType", (String)u.getT_id());
             return map;
         }
         map.put("status", "400");
