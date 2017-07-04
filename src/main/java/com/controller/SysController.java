@@ -27,7 +27,7 @@ public class SysController {
 
     //  RESTFUL API
 //  模块:用户模块
-//  接口名:getIdByPhone
+//  接口名:isCorrectCode
 //  返回值:String
     @RequestMapping(value = "/isCorrectCode", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
