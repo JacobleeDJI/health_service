@@ -84,12 +84,12 @@ public class UserController {
 //  返回值：userID/Status都为Long
     @RequestMapping(value = "/doSignUp", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public Map<String, Long> insertUser(@ModelAttribute User user) {
+    public Map<String, String> insertUser(@ModelAttribute User user) {
         log.info("注册");
         Long loginUser  =userService.getinsertUser(user);
-        Map<String, Long> result = new HashMap<String, Long>();
-        result.put("status", new Long(200));
-        result.put("userId", user.getId());
+        Map<String, String> result = new HashMap<String, String>();
+        result.put("status", "200");
+        result.put("userId", user.getId().toString());
         return result;
     }
 
