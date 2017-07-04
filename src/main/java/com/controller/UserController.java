@@ -116,7 +116,7 @@ public class UserController {
 //  模块：用户模块
 //  接口名：getProfile
 //  返回值：tb_user除密码外的全部字段
-    @RequestMapping(value = "/id", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value = "/getProfile", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public Map<String, String> showUser(Model model, Long id) {
         log.info("通过ID查询");
