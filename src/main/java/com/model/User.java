@@ -18,6 +18,7 @@ public class User {
     private String userPhone;
     private String userAddress;
     private Date Time;
+    private double comfort;
 
     public Long getId() {
         return id;
@@ -90,4 +91,12 @@ public class User {
     public void setTime(Date time) {
         Time = time;
     }
-}
+
+     public double getComfort() {
+         return comfort;
+     }
+
+     public void setComfort(double comfort) {
+         this.comfort = comfort;
+     }
+ }

@@ -116,12 +116,23 @@ public class UserController {
 //  模块：用户模块
 //  接口名：getProfile
 //  返回值：tb_user除密码外的全部字段
-//    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
-//    @ResponseBody
-//    public Map<String, String> showUser(Model model, @PathVariable Long id) {
-//        log.info("通过ID查询");
-//        User users = userService.getUserById(id);
-//        Map<String, String> map = new HashMap<>();
-//        model.addAttribute("users",users);
-//
-//    }
+    @RequestMapping(value = "/id", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String, String> showUser(Model model, Long id) {
+        log.info("通过ID查询");
+        User users = userService.getUserById(id);
+        Map<String, String> map = new HashMap<>();
+        model.addAttribute("users",users);
+        map.put("userId", users.getId().toString());
+        map.put("typeId", String.valueOf(users.getT_id()));
+        map.put("name", users.getUserName());
+        map.put("gender", String.valueOf(users.getUserGender()));
+        map.put("email", users.getUserEmail());
+        map.put("phone", users.getUserPhone());
+        map.put("address", users.getUserAddress());
+        map.put("time", String.valueOf(users.getTime()));
+        map.put("comfort", String.valueOf(users.getComfort()));
+        return map;
+    }
+
+}
