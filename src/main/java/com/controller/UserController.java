@@ -105,6 +105,8 @@ public class UserController {
         Map<String,String> map = new HashMap<String, String>();
         if (u != null) {
             model.addAttribute("Login_user", u);
+            map.put("id", u.getId().toString());
+            map.put("typeId", String.valueOf(u.getT_id()));
             map.put("status", "200");
             return map;
         }
