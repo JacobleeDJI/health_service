@@ -138,3 +138,8 @@ public class UserController {
     }
 
 }
+
+//  RESTFUL API
+//  模块：用户模块
+//  接口名：changeProfile
+//  返回值：状态码
