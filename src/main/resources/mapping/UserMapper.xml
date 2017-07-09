@@ -33,6 +33,12 @@
     <select id="queryForLogin"  resultMap="t_user">
         SELECT * FROM user WHERE phone = #{userPhone} AND password = #{userPwd}
     </select>
+
+    <!--修改用户信息-->
+    <update id="changeProfile" parameterType="com.model.User">
+        UPDATE user
+    </update>
+
     <!--通过手机号和密码进行注册-->
     <insert id="insertUser" parameterType="com.model.User" useGeneratedKeys="true" keyProperty="id" >
         INSERT INTO user (password,phone,type_id) VALUES (#{userPwd}, #{userPhone}, #{t_id})

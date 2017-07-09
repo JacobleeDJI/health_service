@@ -19,6 +19,7 @@ public interface UserDao {
     User selectUserByPhone(String userPhone);//通过电话查询用户信息-已实现
     List<User> selectAllUser();//查询所有的用户信息-已实现
     User queryForLogin(@Param("userPhone") String userPhone, @Param("userPwd") String userPwd);//通过查询数据库验证用户登录
+    User changeProfile(User user);//修改用户信息
     Long insertUser(User user);//注册用户-已实现
 
 }

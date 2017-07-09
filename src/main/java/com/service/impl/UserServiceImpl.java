@@ -44,5 +44,7 @@ public class UserServiceImpl implements UserService {
         return userDao.queryForLogin(userPhone, userPwd);
     }
 
+    public User changeProfile(User user) {return userDao.changeProfile(user); }
+
 }
 

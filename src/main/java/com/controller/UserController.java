@@ -81,7 +81,7 @@ public class UserController {
 //  RESTFUL API
 //  模块：用户模块
 //  接口名：doSignUp
-//  返回值：userID/Status都为Long
+//  返回值：String
     @RequestMapping(value = "/doSignUp", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public Map<String, String> insertUser(@ModelAttribute User user) {
@@ -125,21 +125,39 @@ public class UserController {
         User users = userService.getUserById(id);
         Map<String, String> map = new HashMap<>();
         model.addAttribute("users",users);
-        map.put("userId", users.getId().toString());
-        map.put("typeId", String.valueOf(users.getT_id()));
-        map.put("name", users.getUserName());
-        map.put("gender", String.valueOf(users.getUserGender()));
-        map.put("email", users.getUserEmail());
-        map.put("phone", users.getUserPhone());
-        map.put("address", users.getUserAddress());
-        map.put("time", String.valueOf(users.getTime()));
-        map.put("comfort", String.valueOf(users.getComfort()));
+        if(users != null) {
+            map.put("status", "200");
+            map.put("userId", users.getId().toString());
+            map.put("typeId", String.valueOf(users.getT_id()));
+            map.put("name", users.getUserName());
+            map.put("gender", String.valueOf(users.getUserGender()));
+            map.put("email", users.getUserEmail());
+            map.put("phone", users.getUserPhone());
+            map.put("address", users.getUserAddress());
+            map.put("time", String.valueOf(users.getTime()));
+            map.put("comfort", String.valueOf(users.getComfort()));
+            return map;
+        }
+        map.put("status", "400");
         return map;
     }
 
-}
 
 //  RESTFUL API
 //  模块：用户模块
 //  接口名：changeProfile
 //  返回值：状态码
+    @RequestMapping(value = "/changeProfile", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String, String> changeProfiles(@ModelAttribute User user) {
+        log.info("修改信息");
+        User u = userService.changeProfile(user);
+        Map<String,String> map = new HashMap<String, String>();
+        if (u != null) {
+        map.put("status", "200");
+        return map;
+        }
+        map.put("status", "400");
+        return map;
+}
+}
