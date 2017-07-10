@@ -40,11 +40,13 @@ public class UserServiceImpl implements UserService {
 
     public Long getinsertUser(User user) {return userDao.insertUser(user); }
 
+    public int setChangeProfile(User user) { return userDao.changeProfile(user);}
+
     public User queryForLogin(String userPhone, String userPwd) {
         return userDao.queryForLogin(userPhone, userPwd);
     }
 
-    public User changeProfile(User user) {return userDao.changeProfile(user); }
+
 
 }
 

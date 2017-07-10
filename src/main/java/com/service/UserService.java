@@ -16,7 +16,7 @@ public interface UserService {
     User getUserById(Long userId);
     User getUserByname(String UserName);
     User queryForLogin(String userPhone, String userPwd);
-    User changeProfile(User user);
+    int setChangeProfile(User user);
     Long getinsertUser(User user);
 
 }

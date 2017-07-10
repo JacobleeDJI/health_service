@@ -145,16 +145,19 @@ public class UserController {
 
 //  RESTFUL API
 //  模块：用户模块
-//  接口名：changeProfile
+//  接口名：changeProfileName
 //  返回值：状态码
-    @RequestMapping(value = "/changeProfile", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value = "/changeProfileName", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public Map<String, String> changeProfiles(@ModelAttribute User user) {
-        log.info("修改信息");
-        User u = userService.changeProfile(user);
+    public Map<String, String> changeProfiles(Long userId, String userName) {
+        log.info("修改信息userName");
+        User u = userService.getUserById(userId);
+        u.setUserName(userName);
+        userService.setChangeProfile(u);
         Map<String,String> map = new HashMap<String, String>();
         if (u != null) {
         map.put("status", "200");
+        map.put("修改后userName", u.getUserName());
         return map;
         }
         map.put("status", "400");

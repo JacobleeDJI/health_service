@@ -36,7 +36,7 @@
 
     <!--修改用户信息-->
     <update id="changeProfile" parameterType="com.model.User">
-        UPDATE user
+        UPDATE user set name = #{userName} WHERE id = #{id}
     </update>
 
     <!--通过手机号和密码进行注册-->
