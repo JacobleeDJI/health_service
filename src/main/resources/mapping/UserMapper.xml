@@ -34,9 +34,19 @@
         SELECT * FROM user WHERE phone = #{userPhone} AND password = #{userPwd}
     </select>
 
-    <!--修改用户信息-->
+    <!--修改用户信息name-->
     <update id="changeProfile" parameterType="com.model.User">
         UPDATE user set name = #{userName} WHERE id = #{id}
+    </update>
+
+    <!--修改用户信息gender-->
+    <update id="changeProfileGender" parameterType="com.model.User">
+        UPDATE user set gender = #{userGender} WHERE id = #{id}
+    </update>
+
+    <!--修改用户信息email-->
+    <update id="changeProfileEmail" parameterType="com.model.User">
+        UPDATE user set email = #{userEmail} WHERE id = #{id}
     </update>
 
     <!--通过手机号和密码进行注册-->

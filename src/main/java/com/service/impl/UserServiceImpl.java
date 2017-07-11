@@ -42,6 +42,8 @@ public class UserServiceImpl implements UserService {
 
     public int setChangeProfile(User user) { return userDao.changeProfile(user);}
 
+    public int setChangeProfileGender(User user) { return userDao.changeProfileGender(user); }
+
     public User queryForLogin(String userPhone, String userPwd) {
         return userDao.queryForLogin(userPhone, userPwd);
     }

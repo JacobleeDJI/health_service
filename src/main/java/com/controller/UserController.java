@@ -163,4 +163,25 @@ public class UserController {
         map.put("status", "400");
         return map;
 }
+
+//  RESTFUL API
+//  模块：用户模块
+//  接口名：changeProfileGender
+//  返回值：状态码
+    @RequestMapping(value = "/changeProfileGender", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String, String> changeProfilesGender(Long userId, String userGender) {
+        log.info("修改员工");
+        User u = userService.getUserById(userId);
+        u.setUserGender(userGender);
+        userService.setChangeProfileGender(u);
+        Map<String,String> map = new HashMap<String, String>();
+        if (u != null) {
+            map.put("status", "200");
+            map.put("修改后userGender", u.getUserGender());
+            return map;
+        }
+        map.put("status", "400");
+        return map;
+    }
 }
