@@ -18,6 +18,9 @@ public interface UserService {
     User queryForLogin(String userPhone, String userPwd);
     int setChangeProfile(User user);
     int setChangeProfileGender(User user);
+    int setChangeProfileEmail(User user);
+    int setChangeProfilePhone(User user);
+    int setChangeProfileAddress(User user);
     Long getinsertUser(User user);
 
 }

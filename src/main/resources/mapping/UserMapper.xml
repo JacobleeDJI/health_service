@@ -49,6 +49,16 @@
         UPDATE user set email = #{userEmail} WHERE id = #{id}
     </update>
 
+    <!--修改用户信息phone-->
+    <update id="changeProfilePhone" parameterType="com.model.User">
+        UPDATE user set phone = #{userPhone} WHERE id = #{id}
+    </update>
+
+    <!--修改用户信息address-->
+    <update id="changeProfileAddress" parameterType="com.model.User">
+        UPDATE user set address = #{userAddress} WHERE id = #{id}
+    </update>
+
     <!--通过手机号和密码进行注册-->
     <insert id="insertUser" parameterType="com.model.User" useGeneratedKeys="true" keyProperty="id" >
         INSERT INTO user (password,phone,type_id) VALUES (#{userPwd}, #{userPhone}, #{t_id})

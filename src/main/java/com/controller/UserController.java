@@ -171,7 +171,7 @@ public class UserController {
     @RequestMapping(value = "/changeProfileGender", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public Map<String, String> changeProfilesGender(Long userId, String userGender) {
-        log.info("修改员工");
+        log.info("修改信息Gender");
         User u = userService.getUserById(userId);
         u.setUserGender(userGender);
         userService.setChangeProfileGender(u);
@@ -179,6 +179,70 @@ public class UserController {
         if (u != null) {
             map.put("status", "200");
             map.put("修改后userGender", u.getUserGender());
+            return map;
+        }
+        map.put("status", "400");
+        return map;
+    }
+
+
+//  RESTFUL API
+//  模块：用户模块
+//  接口名：changeProfileEmail
+//  返回值：状态码
+    @RequestMapping(value = "/changeProfileEmail", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String, String> changeProfileEmail(Long userId, String userEmail) {
+        log.info("修改信息Email");
+        User u = userService.getUserById(userId);
+        u.setUserEmail(userEmail);
+        userService.setChangeProfileEmail(u);
+        Map<String,String> map = new HashMap<String, String>();
+        if (u != null) {
+            map.put("status", "200");
+            map.put("修改后userEmail", u.getUserEmail());
+            return map;
+        }
+        map.put("status", "400");
+        return map;
+    }
+
+//  RESTFUL API
+//  模块：用户模块
+//  接口名：changeProfilePhone
+//  返回值：状态码
+    @RequestMapping(value = "/changeProfilePhone", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String, String> changeProfilePhone(Long userId, String userPhone) {
+        log.info("修改信息Phone");
+        User u = userService.getUserById(userId);
+        u.setUserPhone(userPhone);
+        userService.setChangeProfilePhone(u);
+        Map<String,String> map = new HashMap<String, String>();
+        if (u != null) {
+            map.put("status", "200");
+            map.put("修改后userPhone", u.getUserPhone());
+            return map;
+        }
+        map.put("status", "400");
+        return map;
+}
+
+//  RESTFUL API
+//  模块：用户模块
+//  接口名：changeProfileAddress
+//  返回值：状态码
+    @RequestMapping(value = "/changeProfilePhone", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String, String> changeProfileAddress(Long userId, String userAddress) {
+        log.info("修改信息Address");
+        User u = userService.getUserById(userId);
+        u.setUserAddress(userAddress);
+        userService.setChangeProfileAddress(u);
+        Map<String, String> map = new HashMap<>();
+        if (u != null) {
+            map.put("status", "200");
+            map.put("修改后userAddress", u.getUserAddress());
             return map;
         }
         map.put("status", "400");
