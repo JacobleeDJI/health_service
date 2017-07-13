@@ -34,6 +34,11 @@
         SELECT * FROM user WHERE phone = #{userPhone} AND password = #{userPwd}
     </select>
 
+    <!--修改用户信息password-->
+    <update id="changeProfilePassword" parameterType="com.model.User">
+        UPDATE user set password = #{userPassword} WHERE id = #{id}
+    </update>
+
     <!--修改用户信息name-->
     <update id="changeProfile" parameterType="com.model.User">
         UPDATE user set name = #{userName} WHERE id = #{id}

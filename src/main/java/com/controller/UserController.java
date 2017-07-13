@@ -6,6 +6,7 @@ import com.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import sun.nio.cs.US_ASCII;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -232,7 +233,7 @@ public class UserController {
 //  模块：用户模块
 //  接口名：changeProfileAddress
 //  返回值：状态码
-    @RequestMapping(value = "/changeProfilePhone", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value = "/changeProfileAddress", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public Map<String, String> changeProfileAddress(Long userId, String userAddress) {
         log.info("修改信息Address");
@@ -248,4 +249,16 @@ public class UserController {
         map.put("status", "400");
         return map;
     }
+
+//  RESTFUL API
+//  模块：用户模块
+//  接口名：changeProfilePassword
+//  返回值：状态码
+//    @RequestMapping(value = "/changeProfilePassword", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+//    @ResponseBody
+//    public Map<String, String> changeProfilePassword(Long userId, String oldPassWord, String newPassWord) {
+//        log.info("修改信息Password");
+//        User u = userService.getUserById(userId);
+//
+//    }
 }
