@@ -254,11 +254,20 @@ public class UserController {
 //  模块：用户模块
 //  接口名：changeProfilePassword
 //  返回值：状态码
-//    @RequestMapping(value = "/changeProfilePassword", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
-//    @ResponseBody
-//    public Map<String, String> changeProfilePassword(Long userId, String oldPassWord, String newPassWord) {
-//        log.info("修改信息Password");
-//        User u = userService.getUserById(userId);
-//
-//    }
+    @RequestMapping(value = "/changeProfilePassword", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String, String> changeProfilePassword(Long userId, String oldPassWord, String newPassWord) {
+        log.info("修改信息Password");
+        User u = userService.getUserById(userId);
+
+        Map<String, String> map = new HashMap<>();
+        if (u.getUserPwd().equals(oldPassWord)) {
+            u.setUserPwd(newPassWord);
+            userService.setChangeProfilePassword(u);
+            map.put("status", "200");
+            return map;
+        }
+        map.put("status", "400");
+        return map;
+    }
 }
