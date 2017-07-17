@@ -158,7 +158,6 @@ public class UserController {
         Map<String,String> map = new HashMap<String, String>();
         if (u != null) {
         map.put("status", "200");
-        map.put("修改后userName", u.getUserName());
         return map;
         }
         map.put("status", "400");
@@ -179,7 +178,6 @@ public class UserController {
         Map<String,String> map = new HashMap<String, String>();
         if (u != null) {
             map.put("status", "200");
-            map.put("修改后userGender", u.getUserGender());
             return map;
         }
         map.put("status", "400");
@@ -201,7 +199,6 @@ public class UserController {
         Map<String,String> map = new HashMap<String, String>();
         if (u != null) {
             map.put("status", "200");
-            map.put("修改后userEmail", u.getUserEmail());
             return map;
         }
         map.put("status", "400");
@@ -222,7 +219,6 @@ public class UserController {
         Map<String,String> map = new HashMap<String, String>();
         if (u != null) {
             map.put("status", "200");
-            map.put("修改后userPhone", u.getUserPhone());
             return map;
         }
         map.put("status", "400");
@@ -243,7 +239,6 @@ public class UserController {
         Map<String, String> map = new HashMap<>();
         if (u != null) {
             map.put("status", "200");
-            map.put("修改后userAddress", u.getUserAddress());
             return map;
         }
         map.put("status", "400");
