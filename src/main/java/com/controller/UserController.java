@@ -1,17 +1,13 @@
 package com.controller;
 
-import com.model.Sys;
 import com.model.User;
 import com.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import sun.nio.cs.US_ASCII;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -106,7 +102,7 @@ public class UserController {
         Map<String,String> map = new HashMap<String, String>();
         if (u != null) {
             model.addAttribute("Login_user", u);
-            map.put("id", u.getId().toString());
+            map.put("userId", u.getId().toString());
             map.put("typeId", String.valueOf(u.getT_id()));
             map.put("status", "200");
             return map;
@@ -265,4 +261,5 @@ public class UserController {
         map.put("status", "400");
         return map;
     }
+
 }

@@ -23,5 +23,5 @@ public interface UserService {
     int setChangeProfilePhone(User user);
     int setChangeProfileAddress(User user);
     Long getinsertUser(User user);
-
+    List<User> getDocUser(Long userId);
 }

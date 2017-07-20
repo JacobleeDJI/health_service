@@ -11,4 +11,3 @@
         SELECT * FROM sys_param WHERE value = #{s_value}
     </select>
 </mapper>
-

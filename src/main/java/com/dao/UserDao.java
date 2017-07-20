@@ -26,6 +26,6 @@ public interface UserDao {
     int changeProfilePhone(User user);//修改用户信息phone
     int changeProfileAddress(User user);//修改用户信息address
     Long insertUser(User user);//注册用户-已实现
-
+    List<User> selectDocUser(Long userId);
 }
 

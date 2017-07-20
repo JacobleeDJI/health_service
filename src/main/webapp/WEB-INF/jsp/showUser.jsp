@@ -6,11 +6,11 @@
     <title>用户信息列表</title>
 </head>
 <body>
-<c:if test="${!empty list}">
-    <c:forEach var="user" items="${list}">
-        姓名：${user.userName}&nbsp;&nbsp;
-        手机号：${user.userPhone}&nbsp;&nbsp;
-        邮箱：${user.userEmail}<br>
+<c:if test="${!empty responsibles}">
+    <c:forEach var="Responsible" items="${responsibles}">
+        <%--姓名：${user.userName}&nbsp;&nbsp;--%>
+        <%--手机号：${user.userPhone}&nbsp;&nbsp;--%>
+        id：${Responsible.pat_id}<br>
     </c:forEach>
 </c:if>
 
