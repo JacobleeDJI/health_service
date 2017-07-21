@@ -20,6 +20,17 @@ public class User {
     private String userAddress;
     private Date Time;
     private double comfort;
+    private String userUid;
+    private String userMid;
+    private List<Responsible> responsibles;
+
+    public List<Responsible> getResponsibles() {
+        return responsibles;
+    }
+
+    public void setResponsibles(List<Responsible> responsibles) {
+        this.responsibles = responsibles;
+    }
 
     public Long getId() {
         return id;
@@ -100,4 +111,20 @@ public class User {
      public void setComfort(double comfort) {
          this.comfort = comfort;
      }
- }
+
+    public String getUserUid() {
+        return userUid;
+    }
+
+    public void setUserUid(String userUid) {
+        this.userUid = userUid;
+    }
+
+    public String getUserMid() {
+        return userMid;
+    }
+
+    public void setUserMid(String userMid) {
+        this.userMid = userMid;
+    }
+}

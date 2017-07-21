@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
         return userDao.queryForLogin(userPhone, userPwd);
     }
 
-    public List<User> getDocUser(Long userId) {return userDao.selectDocUser(userId); }
+    public List<User> getselectDocPatient(Integer docId) {return userDao.selectDocPatient(docId); }
 
 }
 

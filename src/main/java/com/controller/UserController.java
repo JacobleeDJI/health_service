@@ -1,5 +1,8 @@
 package com.controller;
 
+import com.alibaba.fastjson.JSONArray;
+import com.model.Responsible;
+import com.model.Sys;
 import com.model.User;
 import com.service.UserService;
 import org.apache.log4j.Logger;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -85,8 +89,12 @@ public class UserController {
         log.info("注册");
         Long loginUser  =userService.getinsertUser(user);
         Map<String, String> result = new HashMap<String, String>();
-        result.put("status", "200");
-        result.put("userId", user.getId().toString());
+        if (loginUser != null) {
+            result.put("status", "200");
+            result.put("userId", user.getId().toString());
+            return result;
+        }
+        result.put("status", "400");
         return result;
     }
 
@@ -260,6 +268,20 @@ public class UserController {
         }
         map.put("status", "400");
         return map;
+    }
+
+
+//  RESTFUL API
+//  模块：用户模块
+//  接口名：getBoundUser
+//  返回值：状态码
+    @RequestMapping(value = "/getBoundUser", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public String getbounduser(Integer docId) {
+        log.info("查询医生负责的病人");
+        List<User> users = userService.getselectDocPatient(docId);
+        String user = JSONArray.toJSONString(users);
+        return user;
     }
 
 }
