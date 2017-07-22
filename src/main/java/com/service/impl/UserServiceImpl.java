@@ -40,6 +40,8 @@ public class UserServiceImpl implements UserService {
 
     public Long getinsertUser(User user) {return userDao.insertUser(user); }
 
+    public int getMid(User user) {return userDao.setMid(user); }
+
     public int setChangeProfilePassword(User user) { return userDao.changeProfilePassword(user); }
 
     public int setChangeProfile(User user) { return userDao.changeProfile(user);}
@@ -56,7 +58,7 @@ public class UserServiceImpl implements UserService {
         return userDao.queryForLogin(userPhone, userPwd);
     }
 
-    public List<User> getselectDocPatient(Integer docId) {return userDao.selectDocPatient(docId); }
+    public User getselectDocPatient(Integer docId) {return userDao.selectDocPatient(docId); }
 
 }
 

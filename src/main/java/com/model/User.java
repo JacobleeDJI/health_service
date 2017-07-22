@@ -22,14 +22,14 @@ public class User {
     private double comfort;
     private String userUid;
     private String userMid;
-    private List<Responsible> responsibles;
+    private List<Responsible> responsible;
 
-    public List<Responsible> getResponsibles() {
-        return responsibles;
+    public List<Responsible> getResponsible() {
+        return responsible;
     }
 
-    public void setResponsibles(List<Responsible> responsibles) {
-        this.responsibles = responsibles;
+    public void setResponsible(List<Responsible> responsible) {
+        this.responsible = responsible;
     }
 
     public Long getId() {

@@ -274,15 +274,36 @@ public class UserController {
 
 //  RESTFUL API
 //  模块：用户模块
+//  接口名：bindMachine
+//  返回值：状态码
+    @RequestMapping(value = "/bindMachine", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String, String> bindMachineToUser(Long userId, String userMid) {
+        log.info("绑定机器号");
+        User u = userService.getUserById(userId);
+        u.setUserMid(userMid);
+        userService.getMid(u);
+        Map<String, String> map = new HashMap<>();
+        if (u != null) {
+            map.put("status", "200");
+            return map;
+        }
+        map.put("status", "400");
+        return map;
+    }
+
+//  RESTFUL API
+//  模块：用户模块
 //  接口名：getBoundUser
 //  返回值：状态码
     @RequestMapping(value = "/getBoundUser", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public String getbounduser(Integer docId) {
+    public User getbounduser(Integer docId) {
         log.info("查询医生负责的病人");
-        List<User> users = userService.getselectDocPatient(docId);
-        String user = JSONArray.toJSONString(users);
-        return user;
+        User users = userService.getselectDocPatient(docId);
+        return users;
+//        String user = JSONArray.toJSONString(users);
+//        return user;
     }
 
 }

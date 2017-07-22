@@ -23,5 +23,6 @@ public interface UserService {
     int setChangeProfilePhone(User user);
     int setChangeProfileAddress(User user);
     Long getinsertUser(User user);
-    List<User> getselectDocPatient(Integer docId);
+    int getMid(User user);//绑定机器号(User user);
+    User getselectDocPatient(Integer docId);
 }

@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dao.UserDao">
     <resultMap id="t_user" type="com.model.User">
-        <!--<id property="id" column="id"/>-->
         <result column="id" property="id" jdbcType="VARCHAR"/>
         <result column="type_id" property="t_id" jdbcType="TINYINT"/>
         <result column="password" property="userPwd" jdbcType="VARCHAR"/>
@@ -15,15 +14,22 @@
         <result column="comfort" property="userComfort" jdbcType="DOUBLE"/>
         <result column="uid" property="userUid" jdbcType="VARCHAR"/>
         <result column="mid" property="userMid" jdbcType="VARCHAR"/>
-        <!--用户集合-->
-        <!--<collection property="responsibles" resultMap="Responsible">-->
-            <!--<id property="docId" column="doc_id"/>-->
-            <!--<result property="patient" column="pat_id"/>-->
-        <!--</collection>-->
     </resultMap>
 
-    <select id="selectDocPatient" resultMap="t_user">
-       SELECT * FROM user WHERE id in ( SELECT pat_id FROM responsible WHERE doc_id = #{docId})
+    <resultMap id="doc" type="com.model.User" extends="t_user">
+        <collection property="responsible" ofType="com.model.Responsible">
+            <id property="id" column="r_id"/>
+            <result property="docId" column="doc_id"/>
+            <result property="patId" column="pat_id"/>
+            <result property="time" column="time"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectDocPatient" resultMap="doc">
+          SELECT u.id,u.name,u.phone,u.email,u.address,
+                 r.pat_id
+          FROM
+                user u INNER JOIN responsible r ON u.id = r.doc_id WHERE u.id = #{id}
     </select>
 
     <select id="selectUserById" parameterType="Long" resultMap="t_user">
@@ -77,10 +83,13 @@
         UPDATE user set address = #{userAddress} WHERE id = #{id}
     </update>
 
+    <!--用户绑定机器的Mid-->
+    <update id="setMid" parameterType="com.model.User">
+        UPDATE user SET mid = #{userMid} WHERE id = #{id}
+    </update>
+
     <!--通过手机号和密码进行注册-->
     <insert id="insertUser" parameterType="com.model.User" useGeneratedKeys="true" keyProperty="id" >
         INSERT INTO user (password,phone,type_id,uid) VALUES (#{userPwd}, #{userPhone}, #{t_id}, #{userUid})
     </insert>
-
-
 </mapper>

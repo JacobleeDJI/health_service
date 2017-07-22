@@ -26,7 +26,8 @@ public interface UserDao {
     int changeProfileEmail(User user);//修改用户信息email
     int changeProfilePhone(User user);//修改用户信息phone
     int changeProfileAddress(User user);//修改用户信息address
+    int setMid(User user);//绑定机器号
     Long insertUser(User user);//注册用户-已实现
-    List<User> selectDocPatient(Integer docId);
+    User selectDocPatient(Integer docId);
 }
 
