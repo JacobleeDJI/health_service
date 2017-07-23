@@ -26,10 +26,11 @@
     </resultMap>
 
     <select id="selectDocPatient" resultMap="doc">
-          SELECT u.id,u.name,u.phone,u.email,u.address,
-                 r.pat_id
+          SELECT
+                  *
           FROM
-                user u INNER JOIN responsible r ON u.id = r.doc_id WHERE u.id = #{id}
+                responsible r INNER JOIN user u ON u.id = r.doc_id WHERE r.doc_id = #{docId}
+
     </select>
 
     <select id="selectUserById" parameterType="Long" resultMap="t_user">

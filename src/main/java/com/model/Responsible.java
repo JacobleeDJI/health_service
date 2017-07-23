@@ -7,26 +7,26 @@ import java.util.List;
  * Created by jacob on 2017/7/20.
  */
 public class Responsible {
-    private int id;
+    private int rId;
     private int docId;
     private int patId;
     private Date time;
-    private List<User> users;
+    private List<User> user;
 
-    public List<User> getUsers() {
-        return users;
+    public List<User> getUser() {
+        return user;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setUser(List<User> user) {
+        this.user = user;
     }
 
-    public int getId() {
-        return id;
+    public int getrId() {
+        return rId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setrId(int rId) {
+        this.rId = rId;
     }
 
     public int getDocId() {

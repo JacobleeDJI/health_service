@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.ResponsibleDao">
+    <resultMap id="t_responsible" type="com.model.Responsible">
+        <id property="rId" column="r_id"/>
+        <result property="docId" column="doc_id"/>
+        <result property="patId" column="pat_id"/>
+        <result property="time" column="time"/>
+    </resultMap>
+
+    <resultMap id="t_user" type="com.model.Responsible" extends="t_responsible">
+        <collection property="user" ofType="com.model.User">
+            <id column="id" property="id" jdbcType="VARCHAR"/>
+            <result column="type_id" property="t_id" jdbcType="TINYINT"/>
+            <result column="password" property="userPwd" jdbcType="VARCHAR"/>
+            <result column="name" property="userName" jdbcType="VARCHAR"/>
+            <result column="gender" property="userGender" jdbcType="TINYINT"/>
+            <result column="email" property="userEmail" jdbcType="VARCHAR"/>
+            <result column="phone" property="userPhone" jdbcType="VARCHAR"/>
+            <result column="address" property="userAddress" jdbcType="VARCHAR"/>
+            <result column="time" property="Time" jdbcType="DATE"/>
+            <result column="comfort" property="userComfort" jdbcType="DOUBLE"/>
+            <result column="uid" property="userUid" jdbcType="VARCHAR"/>
+            <result column="mid" property="userMid" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectPatFromUser" resultMap="t_user">
+        SELECT
+              *
+        FROM
+              responsible r INNER JOIN user u ON r.pat_id = u.id WHERE r.doc_id = #{docId}
+</select>
+</mapper>

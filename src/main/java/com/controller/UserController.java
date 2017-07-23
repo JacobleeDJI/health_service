@@ -298,12 +298,14 @@ public class UserController {
 //  返回值：状态码
     @RequestMapping(value = "/getBoundUser", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public User getbounduser(Integer docId) {
+    public List<Responsible> getbounduser(Integer docId) {
         log.info("查询医生负责的病人");
+        int count = 0;
         User users = userService.getselectDocPatient(docId);
-        return users;
-//        String user = JSONArray.toJSONString(users);
-//        return user;
+        for (int i=0; i < users.getResponsible().size(); ++i) {
+            ++count;
+        }
+        return users.getResponsible();
     }
 
 }
