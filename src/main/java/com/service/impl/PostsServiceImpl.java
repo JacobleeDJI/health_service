@@ -19,4 +19,6 @@ public class PostsServiceImpl implements PostsService{
     private PostsDao postsDao;
 
     public int getsendPost(Posts posts) { return postsDao.sendPost(posts);}
+
+    public Posts sgetPostDetail(Integer id) { return postsDao.getPostDetail(id); }
 }

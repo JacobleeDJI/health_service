@@ -6,8 +6,10 @@ import com.model.Sys;
 import com.service.PostsService;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
+import sun.java2d.pipe.SolidTextRenderer;
 
 import javax.annotation.Resource;
+import javax.print.DocFlavor;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,4 +39,20 @@ public class PostsController {
         return map;
     }
 
+    @RequestMapping(value = "/getPostDetail", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String, String> getPostDetail(Integer id) {
+        Posts posts = postsService.sgetPostDetail(id);
+        Map<String, String> map = new HashMap<>();
+        map.put("status:", "200");
+        map.put("id: ", String.valueOf(posts.getId()));
+        map.put("title: ", posts.getTitle());
+        map.put("author_id", String.valueOf(posts.getAuthor_id()));
+        map.put("content", posts.getContent());
+        map.put("image", posts.getImage());
+        map.put("target_id", String.valueOf(posts.getTarget_id()));
+        map.put("time", String.valueOf(posts.getTime()));
+        map.put("type_id", String.valueOf(posts.getType_id()));
+        return map;
+    }
 }

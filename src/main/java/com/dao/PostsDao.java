@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PostsDao {
     int sendPost(Posts posts);//发帖
+    Posts getPostDetail(Integer id);
 }

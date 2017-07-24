@@ -14,6 +14,16 @@ public class Posts {
     private int target_id;
     private Date time;
     private int type_id;
+    private User user;
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public int getId() {
         return id;

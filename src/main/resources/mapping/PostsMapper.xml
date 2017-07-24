@@ -11,8 +11,12 @@
         <result column="time" property="time" jdbcType="DATE"/>
         <result column="type_id" property="type_id" jdbcType="VARCHAR"/>
     </resultMap>
-    
+
     <insert id="sendPost" parameterType="com.model.Posts">
         INSERT INTO posts (author_id, title, content, target_id, type_id) VALUES (#{author_id}, #{title}, #{content}, #{target_id}, #{type_id})
     </insert>
+
+    <select id="getPostDetail" resultMap="t_posts">
+        SELECT * FROM posts WHERE id = #{id}
+    </select>
 </mapper>

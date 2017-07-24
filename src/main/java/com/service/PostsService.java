@@ -7,4 +7,5 @@ import com.model.Posts;
  */
 public interface PostsService {
     int getsendPost(Posts posts);
+    Posts sgetPostDetail(Integer id);
 }

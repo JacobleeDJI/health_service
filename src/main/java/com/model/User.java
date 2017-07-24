@@ -23,6 +23,16 @@ public class User {
     private String userUid;
     private String userMid;
     private List<Responsible> responsible;
+    private Posts posts;
+
+
+    public Posts getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Posts posts) {
+        this.posts = posts;
+    }
 
     public List<Responsible> getResponsible() {
         return responsible;
