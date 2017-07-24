@@ -30,10 +30,11 @@ public class ResponsibleController {
 //  返回值：状态码
     @RequestMapping(value = "/getBoundUser", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public List getbounduser(Integer docId) {
+    public Map<String,List<Responsible>> getbounduser(Integer docId) {
         log.info("查询医生负责的病人");
         List<Responsible> responsible = responsibleService.getselectPatFromUser(docId);
-
-        return responsible;
+        Map<String, List<Responsible>> map = new HashMap<String, List<Responsible>>();
+        map.put("BondUser", responsible);
+        return map;
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -298,14 +299,18 @@ public class UserController {
 //  返回值：状态码
     @RequestMapping(value = "/getBoundUser", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public List<Responsible> getbounduser(Integer docId) {
+    public List<String> getbounduser(Integer docId) {
         log.info("查询医生负责的病人");
+
         int count = 0;
         User users = userService.getselectDocPatient(docId);
         for (int i=0; i < users.getResponsible().size(); ++i) {
             ++count;
         }
-        return users.getResponsible();
+        List<String> list = new ArrayList<>();
+        list.add("BondUser");
+        list.add(String.valueOf(users.getResponsible()));
+        return list;
     }
 
 }

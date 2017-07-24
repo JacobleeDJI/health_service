@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.PostsDao">
+    <resultMap id="t_posts" type="com.model.Posts">
+        <result column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="author_id" property="author_id" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="image" property="image" jdbcType="VARCHAR"/>
+        <result column="target_id" property="target_id" jdbcType="VARCHAR"/>
+        <result column="time" property="time" jdbcType="DATE"/>
+        <result column="type_id" property="type_id" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+    <insert id="sendPost" parameterType="com.model.Posts">
+        INSERT INTO posts (author_id, title, content, target_id, type_id) VALUES (#{author_id}, #{title}, #{content}, #{target_id}, #{type_id})
+    </insert>
+</mapper>
