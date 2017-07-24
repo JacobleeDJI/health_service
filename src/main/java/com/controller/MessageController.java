@@ -6,7 +6,9 @@ import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,6 +33,25 @@ public class MessageController {
             return result;
         }
         result.put("status", "400");
+        return result;
+    }
+
+    @RequestMapping(value = "/getDocList", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public List<String> getDocMessage(String docId) {
+        log.info("查询医生消息列表");
+        int count = 0;
+        List<String> contents = messageService.selectDocList(docId);
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i <contents.size(); i++) {
+            count++;
+        }
+        result.add("status: 400");
+        if (contents != null) {
+            contents.add("status: 200");
+            contents.add("count: " + String.valueOf(count));
+            return contents;
+        }
         return result;
     }
 }

@@ -9,7 +9,13 @@
         <result column="time" property="time" jdbcType="VARCHAR"/>
     </resultMap>
 
+    <!--发送消息-->
     <insert id="sendMessage" parameterType="com.model.Message">
         INSERT INTO message (doc_id, pat_id, content) VALUES (#{docId}, #{patId}, #{content})
     </insert>
+
+    <!--获得医生消息列表-->
+    <select id="selectDocList" resultMap="t_message">
+        SELECT * from message WHERE doc_id = #{docId}
+    </select>
 </mapper>

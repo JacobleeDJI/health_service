@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by jacob on 2017/7/24.
@@ -19,4 +20,6 @@ public class MessageServiceImpl implements MessageService {
     private MessageDao messageDao;
 
     public int getsendMessage(Message message) { return messageDao.sendMessage(message); }
+
+    public List<String> selectDocList(String docId) { return messageDao.selectDocList(docId); }
 }

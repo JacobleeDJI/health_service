@@ -33,6 +33,7 @@ public class ResponsibleController {
     public List getbounduser(Integer docId) {
         log.info("查询医生负责的病人");
         List<Responsible> responsible = responsibleService.getselectPatFromUser(docId);
+
         return responsible;
     }
 }
