@@ -133,13 +133,13 @@ public class UserController {
         model.addAttribute("users",users);
         if(users != null) {
             map.put("status", "200");
-            map.put("userId", users.getId().toString());
-            map.put("typeId", String.valueOf(users.getT_id()));
-            map.put("name", users.getUserName());
-            map.put("gender", String.valueOf(users.getUserGender()));
-            map.put("email", users.getUserEmail());
-            map.put("phone", users.getUserPhone());
-            map.put("address", users.getUserAddress());
+            map.put("id", users.getId().toString());
+            map.put("t_id", String.valueOf(users.getT_id()));
+            map.put("userName", users.getUserName());
+            map.put("userGender", String.valueOf(users.getUserGender()));
+            map.put("userEmail", users.getUserEmail());
+            map.put("userPhone", users.getUserPhone());
+            map.put("userAddress", users.getUserAddress());
             map.put("time", String.valueOf(users.getTime()));
             map.put("comfort", String.valueOf(users.getComfort()));
             return map;
