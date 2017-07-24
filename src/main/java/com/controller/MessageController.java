@@ -54,4 +54,23 @@ public class MessageController {
         }
         return result;
     }
+
+    @RequestMapping(value = "/getPatList", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public List<String> getPatMessage(String patId) {
+        log.info("查询患者消息列表");
+        int count = 0;
+        List<String> contents = messageService.selectPatList(patId);
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i <contents.size(); i++) {
+            count++;
+        }
+        result.add("status: 400");
+        if (contents != null) {
+            contents.add("status: 200");
+            contents.add("count: " + String.valueOf(count));
+            return contents;
+        }
+        return result;
+    }
 }

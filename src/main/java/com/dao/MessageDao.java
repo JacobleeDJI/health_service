@@ -12,4 +12,5 @@ import java.util.List;
 public interface MessageDao {
     int sendMessage(Message message);//发送消息
     List<String> selectDocList(String docId);
+    List<String> selectPatList(String patId);
 }
