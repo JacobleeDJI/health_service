@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.MessageDao">
+    <resultMap id="t_message" type="com.model.Message">
+        <result column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="doc_id" property="docId" jdbcType="VARCHAR"/>
+        <result column="pat_id" property="patId" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="time" property="time" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="sendMessage" parameterType="com.model.Message">
+        INSERT INTO message (doc_id, pat_id, content) VALUES (#{docId}, #{patId}, #{content})
+    </insert>
+</mapper>
