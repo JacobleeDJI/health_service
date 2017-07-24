@@ -21,6 +21,6 @@
 
     <!--获得患者消息列表-->
     <select id="selectPatList" resultMap="t_message">
-        SELECT * FROM message WHERE pat_id = #{pat_id}
+        SELECT * FROM message WHERE pat_id = #{0} AND doc_id = #{1}
     </select>
 </mapper>
