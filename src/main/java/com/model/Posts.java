@@ -1,12 +1,13 @@
 package com.model;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  * Created by jacob on 2017/7/24.
  */
 public class Posts {
-    private int id;
+    private int p_id;
     private String title;
     private int author_id;
     private String content;
@@ -16,7 +17,6 @@ public class Posts {
     private int type_id;
     private User user;
 
-
     public User getUser() {
         return user;
     }
@@ -25,12 +25,12 @@ public class Posts {
         this.user = user;
     }
 
-    public int getId() {
-        return id;
+    public int getP_id() {
+        return p_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setP_id(int p_id) {
+        this.p_id = p_id;
     }
 
     public String getTitle() {

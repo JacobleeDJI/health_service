@@ -2,6 +2,7 @@ package com.controller;
 
 import com.dao.PostsDao;
 import com.model.Posts;
+import com.model.Responsible;
 import com.model.Sys;
 import com.service.PostsService;
 import org.apache.log4j.Logger;
@@ -10,7 +11,9 @@ import sun.java2d.pipe.SolidTextRenderer;
 
 import javax.annotation.Resource;
 import javax.print.DocFlavor;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -41,18 +44,38 @@ public class PostsController {
 
     @RequestMapping(value = "/getPostDetail", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public Map<String, String> getPostDetail(Integer id) {
-        Posts posts = postsService.sgetPostDetail(id);
-        Map<String, String> map = new HashMap<>();
-        map.put("status:", "200");
-        map.put("id: ", String.valueOf(posts.getId()));
-        map.put("title: ", posts.getTitle());
-        map.put("author_id", String.valueOf(posts.getAuthor_id()));
-        map.put("content", posts.getContent());
-        map.put("image", posts.getImage());
-        map.put("target_id", String.valueOf(posts.getTarget_id()));
-        map.put("time", String.valueOf(posts.getTime()));
-        map.put("type_id", String.valueOf(posts.getType_id()));
+    public  Map<String,List<Posts>> getPostDetail(Integer id) {
+        List<Posts> posts = postsService.sgetPostDetail(id);
+        Map<String, List<Posts>> map = new HashMap<String, List<Posts>>();
+        map.put("PostsDetail", posts);
         return map;
+    }
+
+    @RequestMapping(value = "/getCommentList", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String,List<Posts>> getCommentList(Integer id, Integer startNumber, Integer limitNumber) {
+        List<Posts> posts = postsService.sgetCommentList(id, startNumber, limitNumber);
+        Map<String, List<Posts>> map = new HashMap<String, List<Posts>>();
+        map.put("commentList", posts);
+        return map;
+    }
+
+    @RequestMapping(value = "/getPostList", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public List<String> getPostList(Integer author_id) {
+        log.info("获取帖子列表");
+        int count = 0;
+        List<String> postList = postsService.sgetPostList(author_id);
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i <postList.size(); i++) {
+            count++;
+        }
+        if (postList != null) {
+            postList.add("status: 200");
+            postList.add("count: " + String.valueOf(count));
+            return postList;
+        }
+        result.add("status: 400");
+        return result;
     }
 }

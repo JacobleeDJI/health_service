@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by jacob on 2017/7/24.
@@ -20,5 +21,9 @@ public class PostsServiceImpl implements PostsService{
 
     public int getsendPost(Posts posts) { return postsDao.sendPost(posts);}
 
-    public Posts sgetPostDetail(Integer id) { return postsDao.getPostDetail(id); }
+    public List<Posts> sgetPostDetail(Integer id) { return postsDao.getPostDetail(id); }
+
+    public List<Posts> sgetCommentList(Integer id, Integer startNumber, Integer limitNumber) { return  postsDao.getCommentList(id, startNumber, limitNumber) ; }
+
+    public List<String> sgetPostList(Integer author_id) { return postsDao.getPostList(author_id); }
 }
