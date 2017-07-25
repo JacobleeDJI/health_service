@@ -12,5 +12,5 @@ public interface PostsService {
     int getsendPost(Posts posts);
     List<Posts> sgetPostDetail(Integer id);
     List<Posts> sgetCommentList(Integer id, Integer startNumber, Integer limitNumber);
-    List<String> sgetPostList(Integer author_id);
+    List<Posts> sgetPostList(Integer startNumber, Integer limitNumber);
 }

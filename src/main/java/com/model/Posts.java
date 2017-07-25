@@ -17,6 +17,7 @@ public class Posts {
     private int type_id;
     private User user;
 
+
     public User getUser() {
         return user;
     }

@@ -26,7 +26,6 @@
         </association>
     </resultMap>
 
-
     <insert id="sendPost" parameterType="com.model.Posts">
         INSERT INTO posts (author_id, title, content, target_id, type_id) VALUES (#{author_id}, #{title}, #{content}, #{target_id}, #{type_id})
     </insert>
@@ -36,13 +35,13 @@
     </select>
 
     <select id="getPostList" resultMap="t_posts">
-        SELECT * FROM posts WHERE author_id =  #{author_id} AND target_id IS NOT NULL
+        SELECT * FROM posts p INNER JOIN user u ON p.author_id = u.id limit  #{startNumber},#{limitNumber}
     </select>
 
     <select id="getCommentList" resultMap="t_posts">
         SELECT * FROM posts p INNER  JOIN user u ON p.author_id = u.id
         <where>
-            target_id is not NULL AND p_id = #{p_id}
+            target_id is not NULL AND target_id = #{target_id}
         </where>
         limit #{startNumber}, #{limitNumber}
     </select>

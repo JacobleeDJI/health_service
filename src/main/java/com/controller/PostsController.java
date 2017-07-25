@@ -62,20 +62,11 @@ public class PostsController {
 
     @RequestMapping(value = "/getPostList", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public List<String> getPostList(Integer author_id) {
+    public Map<String,List<Posts>> getPostList(Integer startNumber, Integer limitNumber) {
         log.info("获取帖子列表");
-        int count = 0;
-        List<String> postList = postsService.sgetPostList(author_id);
-        List<String> result = new ArrayList<>();
-        for (int i = 0; i <postList.size(); i++) {
-            count++;
-        }
-        if (postList != null) {
-            postList.add("status: 200");
-            postList.add("count: " + String.valueOf(count));
-            return postList;
-        }
-        result.add("status: 400");
-        return result;
+        List<Posts> posts = postsService.sgetPostList(startNumber, limitNumber);
+        Map<String, List<Posts>> map = new HashMap<String, List<Posts>>();
+        map.put("PostsList", posts);
+        return map;
     }
 }

@@ -3,6 +3,7 @@ package com.service.impl;
 import com.dao.PostsDao;
 import com.model.Posts;
 import com.service.PostsService;
+import javafx.geometry.Pos;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,5 +26,5 @@ public class PostsServiceImpl implements PostsService{
 
     public List<Posts> sgetCommentList(Integer id, Integer startNumber, Integer limitNumber) { return  postsDao.getCommentList(id, startNumber, limitNumber) ; }
 
-    public List<String> sgetPostList(Integer author_id) { return postsDao.getPostList(author_id); }
+    public List<Posts> sgetPostList(Integer startNumber, Integer limitNumber) { return postsDao.getPostList(startNumber, limitNumber); }
 }

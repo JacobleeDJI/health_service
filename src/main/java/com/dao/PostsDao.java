@@ -13,6 +13,6 @@ import java.util.List;
 public interface PostsDao {
     int sendPost(Posts posts);//发帖
     List<Posts> getPostDetail(Integer id);
-    List<Posts> getCommentList(@Param("p_id") Integer id, @Param("startNumber") Integer startNumber, @Param("limitNumber") Integer limitNumber);
-    List<String> getPostList(Integer author_id);
+    List<Posts> getCommentList(@Param("target_id") Integer id, @Param("startNumber") Integer startNumber, @Param("limitNumber") Integer limitNumber);
+    List<Posts> getPostList(@Param("startNumber") Integer startNumber, @Param("limitNumber") Integer limitNumber);
 }
