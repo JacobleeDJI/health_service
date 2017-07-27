@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.model.Data;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -12,5 +13,5 @@ import java.util.List;
 @Repository
 public interface DataDao {
     int upLoadData(Data data);
-    List<String> queryData(Integer id);
+    List<Data> queryData(@Param("id") Integer id, @Param("startTime") String startTime, @Param("endTime") String endTime);
 }

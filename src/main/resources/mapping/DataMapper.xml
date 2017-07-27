@@ -17,6 +17,17 @@
     </insert>
 
     <select id="queryData" resultMap="t_data">
-        SELECT * FROM data WHERE id = #{id} ORDER BY time
+        SELECT * FROM data
+        <where>
+            <if test="startTime != null and startTime != '' ">
+                <!--<![CDATA[ and time  >=  #{startTime}  ]]>-->
+                AND time&gt;=#{startTime}
+            </if>
+            <if test="endTime !=null and endTime!='' "  >
+                <!--<![CDATA[ and time <=  #{endTime}  ]]>-->
+                AND time&lt;=#{endTime}
+            </if>
+            AND id = #{id}
+        </where>
     </select>
 </mapper>

@@ -1,25 +1,46 @@
 package com.model;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 import java.sql.Date;
 
 /**
  * Created by jacob on 2017/7/25.
+ * JSON序列化和反序列化使用的data类
  */
 public class Data {
-    private int id;
+    private Integer id;
     private String mid;
-    private int sequence;
+    private Integer sequence;
     private double aa;
     private double bb;
     private double cc;
     private double dd;
-    private Date time;
+    private String time;
+    private String startTime;
+    private String endTime;
 
-    public int getId() {
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -31,11 +52,11 @@ public class Data {
         this.mid = mid;
     }
 
-    public int getSequence() {
+    public Integer getSequence() {
         return sequence;
     }
 
-    public void setSequence(int sequence) {
+    public void setSequence(Integer sequence) {
         this.sequence = sequence;
     }
 
@@ -71,11 +92,11 @@ public class Data {
         this.dd = dd;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 }
