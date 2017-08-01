@@ -10,7 +10,7 @@ public class Message {
     private int docId;
     private int patId;
     private String content;
-    private Date time;
+    private String time;
 
     public int getId() {
         return id;
@@ -44,11 +44,11 @@ public class Message {
         this.content = content;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 }

@@ -13,7 +13,7 @@ public class Posts {
     private String content;
     private String image;
     private int target_id;
-    private Date time;
+    private String time;
     private int type_id;
     private User user;
 
@@ -74,11 +74,11 @@ public class Posts {
         this.target_id = target_id;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
