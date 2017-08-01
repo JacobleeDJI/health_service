@@ -91,8 +91,9 @@ public class UserController {
         Long loginUser  =userService.getinsertUser(user);
         Map<String, String> result = new HashMap<String, String>();
         if (loginUser != null) {
-            result.put("status", "200");
+            result.put("userUid", user.getUserUid());
             result.put("userId", user.getId().toString());
+            result.put("status", "200");
             return result;
         }
         result.put("status", "400");
