@@ -91,7 +91,7 @@ public class UserController {
         Long loginUser  =userService.getinsertUser(user);
         Map<String, String> result = new HashMap<String, String>();
         if (loginUser != null) {
-            result.put("userUid", user.getUserUid());
+//            result.put("userUid", user.getUserUid());
             result.put("userId", user.getId().toString());
             result.put("status", "200");
             return result;
@@ -115,6 +115,7 @@ public class UserController {
             map.put("userId", u.getId().toString());
             map.put("typeId", String.valueOf(u.getT_id()));
             map.put("userMid", u.getUserMid());
+            map.put("userUid", u.getUserUid());
             map.put("status", "200");
             return map;
         }
