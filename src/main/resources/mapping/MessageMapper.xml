@@ -11,7 +11,7 @@
 
     <!--发送消息-->
     <insert id="sendMessage" parameterType="com.model.Message">
-        INSERT INTO message (doc_id, pat_id, content) VALUES (#{docId}, #{patId}, #{content})
+        INSERT INTO message (doc_id, pat_id, content, time) VALUES (#{docId}, #{patId}, #{content}, #{time})
     </insert>
 
     <!--获得医生消息列表-->

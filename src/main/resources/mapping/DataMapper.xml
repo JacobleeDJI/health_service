@@ -27,7 +27,7 @@
                 <!--<![CDATA[ and time <=  #{endTime}  ]]>-->
                 AND time&lt;=#{endTime}
             </if>
-            AND id = #{id}
+            AND mid = #{mid}
         </where>
     </select>
 </mapper>

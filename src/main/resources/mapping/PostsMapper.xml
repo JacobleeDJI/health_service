@@ -27,7 +27,7 @@
     </resultMap>
 
     <insert id="sendPost" parameterType="com.model.Posts">
-        INSERT INTO posts (author_id, title, content, target_id, type_id) VALUES (#{author_id}, #{title}, #{content}, #{target_id}, #{type_id})
+        INSERT INTO posts (author_id, title, content, target_id, type_id, time) VALUES (#{author_id}, #{title}, #{content}, #{target_id}, #{type_id}, #{time})
     </insert>
 
     <select id="getPostDetail" resultMap="t_posts">

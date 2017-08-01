@@ -11,5 +11,5 @@ import java.util.List;
  */
 public interface DataService {
     int upLoadData(Data data);
-    List<Data> getqueryData(@Param("id") Integer id, @Param("startTime") String startTime, @Param("endTime") String endTime);
+    List<Data> getqueryData(@Param("mid") String mid, @Param("startTime") String startTime, @Param("endTime") String endTime);
 }

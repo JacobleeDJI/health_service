@@ -13,5 +13,5 @@ import java.util.List;
 @Repository
 public interface DataDao {
     int upLoadData(Data data);
-    List<Data> queryData(@Param("id") Integer id, @Param("startTime") String startTime, @Param("endTime") String endTime);
+    List<Data> queryData(@Param("mid") String mid, @Param("startTime") String startTime, @Param("endTime") String endTime);
 }

@@ -47,9 +47,9 @@ public class DataController extends SimpleDateFormat {
 
     @RequestMapping(value = "/queryData", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public Map<String,List<Data>> getQuery(Integer id, String startTime, String endTime) {
+    public Map<String,List<Data>> getQuery(String mid, String startTime, String endTime) {
         log.info("获取帖子列表");
-        List<Data> dataList = dataService.getqueryData(id, startTime, endTime);
+        List<Data> dataList = dataService.getqueryData(mid, startTime, endTime);
         Map<String, List<Data>> map = new HashMap<String, List<Data>>();
         map.put("HistoryData", dataList);
         return map;

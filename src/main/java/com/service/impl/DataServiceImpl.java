@@ -23,5 +23,5 @@ public class DataServiceImpl implements DataService {
 
     public int upLoadData(Data data) { return dataDao.upLoadData(data); }
 
-    public List<Data> getqueryData(@Param("id") Integer id, @Param("startTime") String startTime, @Param("endTime") String endTime) { return dataDao.queryData(id, startTime, endTime);}
+    public List<Data> getqueryData(@Param("mid") String mid, @Param("startTime") String startTime, @Param("endTime") String endTime) { return dataDao.queryData(mid, startTime, endTime);}
 }
