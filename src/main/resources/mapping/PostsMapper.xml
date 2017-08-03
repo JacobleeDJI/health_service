@@ -35,7 +35,11 @@
     </select>
 
     <select id="getPostList" resultMap="t_posts">
-        SELECT * FROM posts p INNER JOIN user u ON p.author_id = u.id limit  #{startNumber},#{limitNumber}
+        SELECT * FROM posts p INNER JOIN user u ON p.author_id = u.id
+         <where>
+             p.type_id = 0
+         </where>
+         limit  #{startNumber},#{limitNumber}
     </select>
 
     <select id="getCommentList" resultMap="t_posts">
