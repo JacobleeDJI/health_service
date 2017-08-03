@@ -38,11 +38,11 @@ public class MessageController {
 
     @RequestMapping(value = "/getPatList", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public List<String> getPatMessage(String patId, String docId) {
+    public Map<String,List<String>> getPatMessage(String patId, String docId) {
         log.info("查询患者消息列表");
         int count = 0;
         List<String> contents = messageService.selectPatList(patId, docId);
-        List<String> result = new ArrayList<>();
+        Map<String, List<String>> map = new HashMap<>();
         for (int i = 0; i <contents.size(); i++) {
             count++;
         }
@@ -50,9 +50,11 @@ public class MessageController {
         if (contents != null) {
             contents.add("status: 200");
             contents.add("count: " + String.valueOf(count));
-            return contents;
+            map.put("PatientList", contents);
+            return map;
         }
-        result.add("status: 400");
-        return result;
+        contents.add("status: 400");
+        map.put("PatientList", contents);
+        return map;
     }
 }
