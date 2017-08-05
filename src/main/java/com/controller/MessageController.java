@@ -36,25 +36,27 @@ public class MessageController {
         return result;
     }
 
-    @RequestMapping(value = "/getPatList", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value = "/getMessageList", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public Map<String,List<String>> getPatMessage(String patId, String docId) {
+    public Map<String,List<String>> getPatMessage(String PatId, String DocId) {
         log.info("查询患者消息列表");
         int count = 0;
-        List<String> contents = messageService.selectPatList(patId, docId);
+        List<String> contents = messageService.selectPatList(DocId, PatId);
+        List<String> contents1 = messageService.selectDocList(PatId, DocId);
         Map<String, List<String>> map = new HashMap<>();
+        Map<String, String> map1 = new HashMap<>();
         for (int i = 0; i <contents.size(); i++) {
             count++;
         }
 
         if (contents != null) {
-            contents.add("status: 200");
-            contents.add("count: " + String.valueOf(count));
+//            contents.add("status: 200");
+//            contents.add("count: " + String.valueOf(count));
             map.put("PatientList", contents);
+            map.put("PatientsList_reverse", contents1);
             return map;
         }
-        contents.add("status: 400");
-        map.put("PatientList", contents);
+        map1.put("status", "400");
         return map;
     }
 }

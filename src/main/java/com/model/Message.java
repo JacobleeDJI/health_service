@@ -7,8 +7,8 @@ import java.sql.Date;
  */
 public class Message {
     private int id;
-    private int docId;
-    private int patId;
+    private int fromId;
+    private int toId;
     private String content;
     private String time;
 
@@ -20,20 +20,20 @@ public class Message {
         this.id = id;
     }
 
-    public int getDocId() {
-        return docId;
+    public int getFromId() {
+        return fromId;
     }
 
-    public void setDocId(int docId) {
-        this.docId = docId;
+    public void setFromId(int fromId) {
+        this.fromId = fromId;
     }
 
-    public int getPatId() {
-        return patId;
+    public int getToId() {
+        return toId;
     }
 
-    public void setPatId(int patId) {
-        this.patId = patId;
+    public void setToId(int toId) {
+        this.toId = toId;
     }
 
     public String getContent() {

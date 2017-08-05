@@ -3,24 +3,24 @@
 <mapper namespace="com.dao.MessageDao">
     <resultMap id="t_message" type="com.model.Message">
         <result column="id" property="id" jdbcType="VARCHAR"/>
-        <result column="doc_id" property="docId" jdbcType="VARCHAR"/>
-        <result column="pat_id" property="patId" jdbcType="VARCHAR"/>
+        <result column="from_id" property="fromId" jdbcType="VARCHAR"/>
+        <result column="to_id" property="toId" jdbcType="VARCHAR"/>
         <result column="content" property="content" jdbcType="VARCHAR"/>
         <result column="time" property="time" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--发送消息-->
     <insert id="sendMessage" parameterType="com.model.Message">
-        INSERT INTO message (doc_id, pat_id, content, time) VALUES (#{docId}, #{patId}, #{content}, #{time})
+        INSERT INTO message (from_id, to_id, content, time) VALUES (#{fromId}, #{toId}, #{content}, #{time})
     </insert>
 
     <!--获得医生消息列表-->
     <select id="selectDocList" resultMap="t_message">
-        SELECT * from message WHERE doc_id = #{docId}
+        SELECT * from message WHERE from_id = #{1} AND to_id = #{0}
     </select>
 
     <!--获得患者消息列表-->
     <select id="selectPatList" resultMap="t_message">
-        SELECT * FROM message WHERE pat_id = #{0} AND doc_id = #{1}
+        SELECT * FROM message WHERE to_id = #{0} AND from_id = #{1}
     </select>
 </mapper>

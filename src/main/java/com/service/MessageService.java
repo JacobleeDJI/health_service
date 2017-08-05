@@ -9,5 +9,6 @@ import java.util.List;
  */
 public interface MessageService {
     int getsendMessage(Message message);
-    List<String> selectPatList(String patId, String docId);
+    List<String> selectPatList(String toId, String fromId);
+    List<String> selectDocList(String fromId, String toId);
 }
