@@ -5,6 +5,8 @@ import com.service.MessageService;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +28,9 @@ public class MessageController {
     @ResponseBody
     public Map<String, String> sendMessage(@ModelAttribute Message message) {
         log.info("发送消息");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
+        message.setTime(date);
         int message1 = messageService.getsendMessage(message);
         Map<String, String> result = new HashMap<String, String>();
         if (message1 != 0) {
@@ -53,7 +58,6 @@ public class MessageController {
 //            contents.add("status: 200");
 //            contents.add("count: " + String.valueOf(count));
             map.put("PatientList", contents);
-            map.put("PatientsList_reverse", contents1);
             return map;
         }
         map1.put("status", "400");

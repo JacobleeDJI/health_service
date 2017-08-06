@@ -21,6 +21,8 @@
 
     <!--获得患者消息列表-->
     <select id="selectPatList" resultMap="t_message">
-        SELECT * FROM message WHERE to_id = #{0} AND from_id = #{1}
+        SELECT * FROM message WHERE (to_id = #{0} AND from_id = #{1}) OR (from_id = #{0} AND to_id = #{1})
+        ORDER BY time
     </select>
+
 </mapper>
