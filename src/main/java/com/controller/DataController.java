@@ -37,7 +37,7 @@ public class DataController extends SimpleDateFormat {
         int temp = 0;
         //提取出count
         int count = jsonObject.getInt("count");
-        System.out.println(count);
+//        System.out.println(count);
         //[]json列表数据要转换为JSONArray类型的对象
         JSONArray data = jsonObject.getJSONArray("data");
         for (int i = 0; i < data.size(); i++) {
