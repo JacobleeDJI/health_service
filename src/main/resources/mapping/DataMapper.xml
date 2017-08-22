@@ -5,15 +5,16 @@
         <result column="id" property="id" jdbcType="VARCHAR"/>
         <result column="mid" property="mid" jdbcType="VARCHAR"/>
         <result column="sequence" property="sequence" jdbcType="VARCHAR"/>
-        <result column="aa" property="aa" jdbcType="DOUBLE"/>
-        <result column="bb" property="bb" jdbcType="DOUBLE"/>
-        <result column="cc" property="cc" jdbcType="DOUBLE"/>
-        <result column="dd" property="dd" jdbcType="DOUBLE"/>
+        <result column="aa" property="aa" jdbcType="VARCHAR"/>
+        <result column="bb" property="bb" jdbcType="VARCHAR"/>
+        <result column="cc" property="cc" jdbcType="VARCHAR"/>
+        <result column="dd" property="dd" jdbcType="VARCHAR"/>
         <result column="time" property="time" jdbcType="DATE"/>
+        <result column="sync" property="sync" jdbcType="VARCHAR"/>
     </resultMap>
     
     <insert id="upLoadData" parameterType="com.model.Data">
-        INSERT INTO data (id, mid, sequence, aa, bb, cc, dd, time) VALUES (#{id}, #{mid}, #{sequence}, #{aa}, #{bb}, #{cc}, #{dd}, #{time})
+        INSERT INTO data (mid, sequence, aa, bb, cc, dd, time, sync) VALUES (#{mid}, #{sequence}, #{aa}, #{bb}, #{cc}, #{dd}, #{time}, #{sync})
     </insert>
 
     <select id="queryData" resultMap="t_data">
@@ -27,7 +28,7 @@
                 <!--<![CDATA[ and time <=  #{endTime}  ]]>-->
                 AND time&lt;=#{endTime}
             </if>
-            AND mid = #{mid}
+            AND mid = #{mid} ORDER BY TIME DESC
         </where>
     </select>
 </mapper>
