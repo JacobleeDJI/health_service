@@ -1,6 +1,7 @@
 package com.controller;
 
-
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.model.*;
 import com.service.DataService;
@@ -28,26 +29,38 @@ public class DataController extends SimpleDateFormat {
 
     @RequestMapping(value = "/upLoadData", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public void uploadData(String upLoad) throws IOException {
+    public Map<String, String> uploadData(String upLoad) throws IOException {
+        Map<String, String> map = new HashMap<>();
         ObjectMapper mapper = new ObjectMapper();
         java.net.URLDecoder.decode(upLoad, upLoad);
-        JsonData jsonData = mapper.readValue(upLoad, JsonData.class);
-        int count = jsonData.getCount();
-        String json = mapper.writeValueAsString(jsonData);
-        List<RData> dataList = jsonData.getData();
+        JSONObject jsonObject = JSONObject.fromObject(upLoad);
         int temp = 0;
-//        for (int i = 0; i < count; i++){
-//            dataList = jsonData.getDataList(i);
-//            Data data = mapper.readValue(, Data.class);
-//            System.out.println(dataList);
-//            Data data = mapper.readValue(Rdata, Data[].class)[i];
-//            temp++;
-//        }
-
-        System.out.println(json);
+        //提取出count
+        int count = jsonObject.getInt("count");
         System.out.println(count);
-        System.out.println(temp);
+        //[]json列表数据要转换为JSONArray类型的对象
+        JSONArray data = jsonObject.getJSONArray("data");
+        for (int i = 0; i < data.size(); i++) {
+            String json =  data.getJSONObject(i).toString();
+            Data data1 = mapper.readValue(json, Data.class);
+            dataService.upLoadData(data1);
+            temp++;
+        }
 
+        if (temp == count) {
+            map.put("Result", "All Loaded");
+            map.put("status", "200");
+        }
+
+
+        else {
+            map.put("Result", "Load Failed");
+            map.put("status", "400");
+            int t = count - temp;
+            map.put("失败条数", String.valueOf(t));
+        }
+
+        return map;
     }
 
     @RequestMapping(value = "/queryData", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
