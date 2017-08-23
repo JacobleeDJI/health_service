@@ -37,4 +37,22 @@ public class ResponsibleController {
         map.put("BondUser", responsible);
         return map;
     }
+
+//  RESTFUL API
+//  模块：用户模块
+//  接口名：getBoundDoctor
+//  返回值：json
+    @RequestMapping(value = "/getBoundDoctor", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String, String> getbounddoctor(Integer patId) {
+        log.info("查询患者对应的医生");
+        Responsible responsible = responsibleService.getselectBoundDocter(patId);
+        Map<String, String> map = new HashMap<>();
+        if (responsible == null) {
+            map.put("DoctorId", "null");
+            return map;
+        }
+        map.put("DoctorId", String.valueOf(responsible.getDocId()));
+        return map;
+    }
 }

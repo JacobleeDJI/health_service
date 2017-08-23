@@ -20,4 +20,6 @@ public class ResponsibleServiceImpl implements ResponsibleService {
     private ResponsibleDao responsibleDao;
 
     public List<Responsible>  getselectPatFromUser(Integer docId) { return responsibleDao.selectPatFromUser(docId); };
+
+    public  Responsible getselectBoundDocter(Integer patId) { return responsibleDao.selectBoundDocter(patId); };
 }

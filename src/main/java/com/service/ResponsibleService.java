@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface ResponsibleService {
     List<Responsible> getselectPatFromUser(Integer docId);
+    Responsible getselectBoundDocter(Integer patId);
 }

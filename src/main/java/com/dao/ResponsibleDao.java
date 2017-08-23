@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface ResponsibleDao {
     List<Responsible> selectPatFromUser(Integer docId);
+    Responsible selectBoundDocter(Integer patId);
 }
