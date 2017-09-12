@@ -22,6 +22,13 @@ public class User {
     private double comfort;
     private String userUid;
     private String userMid;
+    private String userMac;
+    private String userAge;
+    private Date userCalibtime;
+    private String userComfortA;
+    private String userComfortB;
+    private String userComfortC;
+    private String userComfortD;
     private List<Responsible> responsible;
     private Posts posts;
 
@@ -136,5 +143,61 @@ public class User {
 
     public void setUserMid(String userMid) {
         this.userMid = userMid;
+    }
+
+    public String getUserMac() {
+        return userMac;
+    }
+
+    public void setUserMac(String userMac) {
+        this.userMac = userMac;
+    }
+
+    public String getUserAge() {
+        return userAge;
+    }
+
+    public void setUserAge(String userAge) {
+        this.userAge = userAge;
+    }
+
+    public Date getUserCalibtime() {
+        return userCalibtime;
+    }
+
+    public void setUserCalibtime(Date userCalibtime) {
+        this.userCalibtime = userCalibtime;
+    }
+
+    public String getUserComfortA() {
+        return userComfortA;
+    }
+
+    public void setUserComfortA(String userComfortA) {
+        this.userComfortA = userComfortA;
+    }
+
+    public String getUserComfortB() {
+        return userComfortB;
+    }
+
+    public void setUserComfortB(String userComfortB) {
+        this.userComfortB = userComfortB;
+    }
+
+    public String getUserComfortC() {
+        return userComfortC;
+    }
+
+    public void setUserComfortC(String userComfortC) {
+        this.userComfortC = userComfortC;
+    }
+
+    public String getUserComfortD() {
+        return userComfortD;
+    }
+
+    public void setUserComfortD(String userComfortD) {
+        this.userComfortD = userComfortD;
     }
 }

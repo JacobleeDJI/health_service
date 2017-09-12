@@ -114,7 +114,7 @@ public class UserController {
             model.addAttribute("Login_user", u);
             map.put("userId", u.getId().toString());
             map.put("typeId", String.valueOf(u.getT_id()));
-            map.put("userMid", u.getUserMid());
+            map.put("userMac", u.getUserMac());
             map.put("userUid", u.getUserUid());
             map.put("status", "200");
             return map;

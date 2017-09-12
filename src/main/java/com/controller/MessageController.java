@@ -1,10 +1,14 @@
 package com.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.model.Message;
 import com.service.MessageService;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.annotation.Resource;
@@ -39,6 +43,34 @@ public class MessageController {
         }
         result.put("status", "400");
         return result;
+    }
+
+    @RequestMapping(value = "/sendGroupMessage", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String, String> sendGroupMessage(String groupMessage) throws IOException {
+        log.info("群发消息");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = df.format(new Date());
+        java.net.URLDecoder.decode(groupMessage, groupMessage);
+        Map<String, String> map = new HashMap<>();
+        ObjectMapper mapper = new ObjectMapper();
+        JSONObject jsonObject = JSONObject.fromObject(groupMessage);
+        int temp = 0;
+        JSONArray GroupMessage = jsonObject.getJSONArray("GroupMessage");
+        for (int i = 0; i < GroupMessage.size(); i++) {
+            String json = GroupMessage.getJSONObject(i).toString();
+            Message message = mapper.readValue(json, Message.class);
+            message.setTime(date);
+            messageService.getsendGroupMessage(message);
+            temp++;
+        }
+        if (temp == GroupMessage.size()) {
+            map.put("status", "200");
+        }
+        else
+            map.put("status", "400");
+
+        return map;
     }
 
     @RequestMapping(value = "/getMessageList", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})

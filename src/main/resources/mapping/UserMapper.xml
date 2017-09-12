@@ -14,6 +14,13 @@
         <result column="comfort" property="userComfort" jdbcType="DOUBLE"/>
         <result column="uid" property="userUid" jdbcType="VARCHAR"/>
         <result column="mid" property="userMid" jdbcType="VARCHAR"/>
+        <result column="mac" property="userMac" jdbcType="VARCHAR"/>
+        <result column="age" property="userAge" jdbcType="VARCHAR"/>
+        <result column="first_calibtime" property="userCalibtime" jdbcType="DATE"/>
+        <result column="comfort_A" property="userComfortA" jdbcType="VARCHAR"/>
+        <result column="comfort_B" property="userComfortB" jdbcType="VARCHAR"/>
+        <result column="comfort_C" property="userComfortC" jdbcType="VARCHAR"/>
+        <result column="comfort_D" property="userComfortD" jdbcType="VARCHAR"/>
     </resultMap>
 
     <resultMap id="doc" type="com.model.User" extends="t_user">

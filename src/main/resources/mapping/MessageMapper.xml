@@ -14,6 +14,18 @@
         INSERT INTO message (from_id, to_id, content, time) VALUES (#{fromId}, #{toId}, #{content}, #{time})
     </insert>
 
+    <!--群发消息-->
+    <!--<insert id="sendGroupMessage" parameterType="java.util.List">-->
+        <!--INSERT INTO message (from_id, to_id, content, time)-->
+        <!--VALUES-->
+        <!--<foreach collection="list" item="item" index="index" separator=",">-->
+            <!--(#{item.fromId}, #{item.toId}, #{item.content}, #{item.time})-->
+        <!--</foreach>-->
+    <!--</insert>-->
+    <insert id="sendGroupMessage" parameterType="com.model.Message">
+        INSERT INTO message (from_id, to_id, content, time) VALUES (#{fromId}, #{toId}, #{content}, #{time})
+    </insert>
+
     <!--获得医生消息列表-->
     <select id="selectDocList" resultMap="t_message">
         SELECT * from message WHERE from_id = #{1} AND to_id = #{0}

@@ -21,6 +21,8 @@ public class MessageServiceImpl implements MessageService {
 
     public int getsendMessage(Message message) { return messageDao.sendMessage(message); }
 
+    public int getsendGroupMessage(Message message) {return messageDao.sendGroupMessage(message);}
+
     public List<String> selectPatList(String patId, String docId) { return messageDao.selectPatList(patId, docId); }
 
     public List<String> selectDocList(String fromId, String toId) { return messageDao.selectDocList(fromId, toId); }
