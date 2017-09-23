@@ -87,7 +87,7 @@ public class UserController {
     public Map<String, String> insertUser(@ModelAttribute User user) {
         log.info("注册");
         Long loginUser  =userService.getinsertUser(user);
-        Map<String, String> result = new HashMap<String, String>();
+        Map<String, String> result = new LinkedHashMap<>();
         if (loginUser != null) {
 //            result.put("userUid", user.getUserUid());
             result.put("userId", user.getId().toString());
@@ -107,14 +107,19 @@ public class UserController {
     public Map<String, String> login(Model model,String userPhone, String userPwd) {
         log.info("登录");
         User u = userService.queryForLogin(userPhone, userPwd);
-        Map<String,String> map = new HashMap<String, String>();
+        Map<String,String> map = new LinkedHashMap<>();
         if (u != null) {
             model.addAttribute("Login_user", u);
+            map.put("status", "200");
             map.put("userId", u.getId().toString());
             map.put("typeId", String.valueOf(u.getT_id()));
             map.put("userMid", u.getUserMid());
             map.put("userUid", u.getUserUid());
-            map.put("status", "200");
+            map.put("first_calibtime", u.getUserCalibtime());
+            map.put("comfort_A", String.valueOf(u.getUserComfortA()));
+            map.put("comfort_B", String.valueOf(u.getUserComfortB()));
+            map.put("comfort_C", String.valueOf(u.getUserComfortC()));
+            map.put("comfort_D", String.valueOf(u.getUserComfortD()));
             return map;
         }
         map.put("status", "400");
@@ -130,7 +135,7 @@ public class UserController {
     public Map<String, String> showUser(Model model, Long id) {
         log.info("通过ID查询");
         User users = userService.getUserById(id);
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = new LinkedHashMap<>();
         model.addAttribute("users",users);
         if(users != null) {
             map.put("status", "200");
@@ -142,7 +147,13 @@ public class UserController {
             map.put("userPhone", users.getUserPhone());
             map.put("userAddress", users.getUserAddress());
             map.put("time", String.valueOf(users.getTime()));
-            map.put("comfort", String.valueOf(users.getComfort()));
+            map.put("userUid", users.getUserUid());
+            map.put("userMid", users.getUserMid());
+            map.put("first_calibtime", users.getUserCalibtime());
+            map.put("comfort_A", String.valueOf(users.getUserComfortA()));
+            map.put("comfort_B", String.valueOf(users.getUserComfortB()));
+            map.put("comfort_C", String.valueOf(users.getUserComfortC()));
+            map.put("comfort_D", String.valueOf(users.getUserComfortD()));
             return map;
         }
         map.put("status", "400");
