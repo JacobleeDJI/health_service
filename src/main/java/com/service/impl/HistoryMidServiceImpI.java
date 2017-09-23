@@ -18,6 +18,8 @@ public class HistoryMidServiceImpI implements HistoryMidService {
     @Resource
     private HistoryMidDao historyMidDao;
 
+    public  int getsetMid(HistoryMid historyMid) { return historyMidDao.setMid(historyMid); };
+
     public HistoryMid getselectOldMid(String userUid) { return historyMidDao.selectOldMid(userUid); };
 
     public int getinsertHistoryMid(HistoryMid historyMid) { return historyMidDao.insertHistoryMid(historyMid); };

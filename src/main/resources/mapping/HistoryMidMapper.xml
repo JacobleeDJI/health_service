@@ -40,8 +40,8 @@
 
     <!--将MID和对应的UID存储到历史表中-->
     <insert id="insertHistoryMid" parameterType="com.model.HistoryMid">
-        INSERT INTO res_history (uid, mid, comfortA, comfortB, comfortC, comfortD)
-        VALUES (#{uid}, #{mid}, #{comfortA}, #{comfortB}, #{comfortC}, #{comfortD})
+        INSERT INTO res_history (uid, mid, comfortA, comfortB, comfortC, comfortD, first_calib)
+        VALUES (#{uid}, #{mid}, #{comfortA}, #{comfortB}, #{comfortC}, #{comfortD}, #{calibtime})
     </insert>
 
     <select id="selectOldMid" resultMap="user">
@@ -49,8 +49,12 @@
         *
         FROM
         user WHERE uid = #{userUid}
-
     </select>
+
+    <!--用户绑定机器的Mid-->
+    <update id="setMid" parameterType="com.model.HistoryMid">
+        UPDATE user SET mid = #{userMid} WHERE uid = #{userUid}
+    </update>
 
 </mapper>
 

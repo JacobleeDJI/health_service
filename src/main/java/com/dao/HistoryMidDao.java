@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.model.HistoryMid;
+import com.model.User;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,4 +11,5 @@ import org.springframework.stereotype.Repository;
 public interface HistoryMidDao {
     int insertHistoryMid(HistoryMid historyMid);
     HistoryMid selectOldMid(String userUid);
+    int setMid(HistoryMid historyMid);//绑定机器号
 }

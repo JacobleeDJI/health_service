@@ -8,4 +8,5 @@ import com.model.HistoryMid;
 public interface HistoryMidService {
     int getinsertHistoryMid(HistoryMid historyMid);
     HistoryMid getselectOldMid(String userUid);
+    int getsetMid(HistoryMid historyMid);
 }

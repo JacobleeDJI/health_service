@@ -33,8 +33,7 @@ public class HistoryMidController {
         log.info("存储历史MID");
         HistoryMid historyMid= historyMidService.getselectOldMid(userUid);
         Map<String, String> result = new HashMap<String, String>();
-        if (historyMid != null) {
-            if (historyMid.getUser().getUserMid() != null){
+        if (historyMid != null && historyMid.getUser().getUserMid() != null) {
                 historyMid.setUid(historyMid.getUser().getUserUid());
                 historyMid.setMid(historyMid.getUser().getUserMid());
                 historyMid.setComfortA(historyMid.getUser().getUserComfortA());
@@ -43,8 +42,7 @@ public class HistoryMidController {
                 historyMid.setComfortD(historyMid.getUser().getUserComfortD());
                 historyMid.setCalibtime(historyMid.getUser().getUserCalibtime());
                 historyMidService.getinsertHistoryMid(historyMid);
-            }
-            result.put("status", "200");
+                result.put("status", "200");
             return result;
         }
         result.put("status", "400");
