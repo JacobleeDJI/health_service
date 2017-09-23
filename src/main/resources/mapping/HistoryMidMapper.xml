@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.HistoryMidDao">
+    <resultMap id="t_resHistory" type="com.model.HistoryMid">
+        <result column="uid" property="uid" jdbcType="VARCHAR"/>
+        <result column="mid" property="mid" jdbcType="VARCHAR"/>
+        <result column="mid1" property="mid1" jdbcType="VARCHAR"/>
+        <result column="mid2" property="mid2" jdbcType="VARCHAR"/>
+        <result column="mid3" property="mid3" jdbcType="VARCHAR"/>
+        <result column="comfortA" property="compfortA" jdbcType="DOUBLE"/>
+        <result column="comfortB" property="compfortB" jdbcType="DOUBLE"/>
+        <result column="comfortC" property="compfortC" jdbcType="DOUBLE"/>
+        <result column="comfortD" property="compfortD" jdbcType="DOUBLE"/>
+        <result column="first_calib" property="calibtime" jdbcType="DATE"/>
+    </resultMap>
+
+    <resultMap id="user" type="com.model.HistoryMid" extends="t_resHistory">
+        <collection property="user" ofType="com.model.User">
+            <result column="id" property="id" jdbcType="VARCHAR"/>
+            <result column="type_id" property="t_id" jdbcType="TINYINT"/>
+            <result column="password" property="userPwd" jdbcType="VARCHAR"/>
+            <result column="name" property="userName" jdbcType="VARCHAR"/>
+            <result column="gender" property="userGender" jdbcType="TINYINT"/>
+            <result column="email" property="userEmail" jdbcType="VARCHAR"/>
+            <result column="phone" property="userPhone" jdbcType="VARCHAR"/>
+            <result column="address" property="userAddress" jdbcType="VARCHAR"/>
+            <result column="time" property="Time" jdbcType="DATE"/>
+            <result column="comfort" property="userComfort" jdbcType="DOUBLE"/>
+            <result column="uid" property="userUid" jdbcType="VARCHAR"/>
+            <result column="mid" property="userMid" jdbcType="VARCHAR"/>
+            <result column="mac" property="userMac" jdbcType="VARCHAR"/>
+            <result column="age" property="userAge" jdbcType="VARCHAR"/>
+            <result column="first_calibtime" property="userCalibtime" jdbcType="DATE"/>
+            <result column="comfort_A" property="userComfortA" jdbcType="DOUBLE"/>
+            <result column="comfort_B" property="userComfortB" jdbcType="DOUBLE"/>
+            <result column="comfort_C" property="userComfortC" jdbcType="DOUBLE"/>
+            <result column="comfort_D" property="userComfortD" jdbcType="DOUBLE"/>
+        </collection>
+    </resultMap>
+
+    <!--将MID和对应的UID存储到历史表中-->
+    <insert id="insertHistoryMid" parameterType="com.model.HistoryMid">
+        INSERT INTO res_history (uid, mid, comfortA, comfortB, comfortC, comfortD)
+        VALUES (#{uid}, #{mid}, #{comfortA}, #{comfortB}, #{comfortC}, #{comfortD})
+    </insert>
+
+    <select id="selectOldMid" resultMap="user">
+        SELECT
+        *
+        FROM
+        user WHERE uid = #{userUid}
+
+    </select>
+
+</mapper>
+
+

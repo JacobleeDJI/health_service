@@ -24,11 +24,11 @@ public class User {
     private String userMid;
     private String userMac;
     private String userAge;
-    private Date userCalibtime;
-    private String userComfortA;
-    private String userComfortB;
-    private String userComfortC;
-    private String userComfortD;
+    private String userCalibtime;
+    private double userComfortA;
+    private double userComfortB;
+    private double userComfortC;
+    private double userComfortD;
     private List<Responsible> responsible;
     private Posts posts;
 
@@ -161,43 +161,44 @@ public class User {
         this.userAge = userAge;
     }
 
-    public Date getUserCalibtime() {
+
+    public String getUserCalibtime() {
         return userCalibtime;
     }
 
-    public void setUserCalibtime(Date userCalibtime) {
+    public void setUserCalibtime(String userCalibtime) {
         this.userCalibtime = userCalibtime;
     }
 
-    public String getUserComfortA() {
+    public double getUserComfortA() {
         return userComfortA;
     }
 
-    public void setUserComfortA(String userComfortA) {
+    public void setUserComfortA(double userComfortA) {
         this.userComfortA = userComfortA;
     }
 
-    public String getUserComfortB() {
+    public double getUserComfortB() {
         return userComfortB;
     }
 
-    public void setUserComfortB(String userComfortB) {
+    public void setUserComfortB(double userComfortB) {
         this.userComfortB = userComfortB;
     }
 
-    public String getUserComfortC() {
+    public double getUserComfortC() {
         return userComfortC;
     }
 
-    public void setUserComfortC(String userComfortC) {
+    public void setUserComfortC(double userComfortC) {
         this.userComfortC = userComfortC;
     }
 
-    public String getUserComfortD() {
+    public double getUserComfortD() {
         return userComfortD;
     }
 
-    public void setUserComfortD(String userComfortD) {
+    public void setUserComfortD(double userComfortD) {
         this.userComfortD = userComfortD;
     }
 }

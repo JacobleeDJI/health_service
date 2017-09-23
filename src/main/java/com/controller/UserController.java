@@ -10,10 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.rmi.MarshalledObject;
+import java.util.*;
 
 @RestController
 @RequestMapping("/user")
@@ -114,7 +112,7 @@ public class UserController {
             model.addAttribute("Login_user", u);
             map.put("userId", u.getId().toString());
             map.put("typeId", String.valueOf(u.getT_id()));
-            map.put("userMac", u.getUserMac());
+            map.put("userMid", u.getUserMid());
             map.put("userUid", u.getUserUid());
             map.put("status", "200");
             return map;
@@ -274,6 +272,126 @@ public class UserController {
         return map;
     }
 
+//  RESTFUL API
+//  模块：用户模块
+//  接口名：changeProfileAge
+//  返回值：状态码
+    @RequestMapping(value = "/changeProfileAge", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String, String> changeProfileAge(Long userId, String Age) {
+        log.info("修改年龄");
+        User u = userService.getUserById(userId);
+        Map<String, String> map = new HashMap<>();
+        if (u != null) {
+            u.setUserAge(Age);
+            userService.setChangeProfileAge(u);
+            map.put("status", "200");
+            return map;
+        }
+        map.put("status", "400");
+        return map;
+    }
+
+//  RESTFUL API
+//  模块：用户模块
+//  接口名：upLoadA
+//  返回值：状态码
+    @RequestMapping(value = "/upLoadComfortA", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String, String> uploadcomfortA(String userUid, double userComfortA) {
+        log.info("上传定标数据A");
+        User u = userService.getUserByUid(userUid);
+        Map<String, String> map = new HashMap<>();
+        if (u != null) {
+            u.setUserComfortA(userComfortA);
+            userService.setupLoadA(u);
+            map.put("status", "200");
+            return map;
+        }
+        map.put("status", "400");
+        return map;
+    }
+
+//  RESTFUL API
+//  模块：用户模块
+//  接口名：upLoadA
+//  返回值：状态码
+    @RequestMapping(value = "/upLoadComfortB", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String, String> uploadcomfortB(String userUid, double userComfortB) {
+        log.info("上传定标数据B");
+        User u = userService.getUserByUid(userUid);
+        Map<String, String> map = new HashMap<>();
+        if (u != null) {
+            u.setUserComfortB(userComfortB);
+            userService.setupLoadB(u);
+            map.put("status", "200");
+            return map;
+        }
+        map.put("status", "400");
+        return map;
+    }
+
+//  RESTFUL API
+//  模块：用户模块
+//  接口名：upLoadA
+//  返回值：状态码
+    @RequestMapping(value = "/upLoadComfortC", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String, String> uploadcomfortC(String userUid, double userComfortC) {
+        log.info("上传定标数据C");
+        User u = userService.getUserByUid(userUid);
+        Map<String, String> map = new HashMap<>();
+        if (u != null) {
+            u.setUserComfortC(userComfortC);
+            userService.setupLoadC(u);
+            map.put("status", "200");
+            return map;
+        }
+        map.put("status", "400");
+        return map;
+    }
+
+//  RESTFUL API
+//  模块：用户模块
+//  接口名：upLoadA
+//  返回值：状态码
+    @RequestMapping(value = "/upLoadComfortD", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String, String> uploadcomfortD(String userUid, double userComfortD) {
+        log.info("上传定标数据D");
+        User u = userService.getUserByUid(userUid);
+        Map<String, String> map = new HashMap<>();
+        if (u != null) {
+            u.setUserComfortD(userComfortD);
+            userService.setupLoadD(u);
+            map.put("status", "200");
+            return map;
+        }
+        map.put("status", "400");
+        return map;
+    }
+
+
+//  RESTFUL API
+//  模块：用户模块
+//  接口名：firstcalibTime
+//  返回值：状态码
+    @RequestMapping(value = "/firstCalibTime", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Map<String, String> calibTime(String userUid, String firstCalibTime) {
+        log.info("上传首次定标时间");
+        User u = userService.getUserByUid(userUid);
+        Map<String, String> map = new HashMap<>();
+        if (u != null) {
+            u.setUserCalibtime(firstCalibTime);
+            userService.setfirstCalibTime(u);
+            map.put("status", "200");
+            return map;
+        }
+        map.put("status", "400");
+        return map;
+    }
 
 //  RESTFUL API
 //  模块：用户模块
@@ -281,9 +399,9 @@ public class UserController {
 //  返回值：状态码
     @RequestMapping(value = "/bindMachine", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public Map<String, String> bindMachineToUser(Long userId, String userMid) {
+    public Map<String, String> bindMachineToUser(String userUid, String userMid) {
         log.info("绑定机器号");
-        User u = userService.getUserById(userId);
+        User u = userService.getUserByUid(userUid);
         u.setUserMid(userMid);
         userService.getMid(u);
         Map<String, String> map = new HashMap<>();

@@ -17,10 +17,10 @@
         <result column="mac" property="userMac" jdbcType="VARCHAR"/>
         <result column="age" property="userAge" jdbcType="VARCHAR"/>
         <result column="first_calibtime" property="userCalibtime" jdbcType="DATE"/>
-        <result column="comfort_A" property="userComfortA" jdbcType="VARCHAR"/>
-        <result column="comfort_B" property="userComfortB" jdbcType="VARCHAR"/>
-        <result column="comfort_C" property="userComfortC" jdbcType="VARCHAR"/>
-        <result column="comfort_D" property="userComfortD" jdbcType="VARCHAR"/>
+        <result column="comfort_A" property="userComfortA" jdbcType="DOUBLE"/>
+        <result column="comfort_B" property="userComfortB" jdbcType="DOUBLE"/>
+        <result column="comfort_C" property="userComfortC" jdbcType="DOUBLE"/>
+        <result column="comfort_D" property="userComfortD" jdbcType="DOUBLE"/>
     </resultMap>
 
     <resultMap id="doc" type="com.model.User" extends="t_user">
@@ -42,6 +42,10 @@
 
     <select id="selectUserById" parameterType="Long" resultMap="t_user">
         SELECT * FROM user WHERE id = #{userId}
+    </select>
+
+    <select id="selectUserByUid" parameterType="String" resultMap="t_user">
+        SELECT * FROM user WHERE uid = #{userUid}
     </select>
 
     <select id="selectUserByname" resultMap="t_user">
@@ -91,6 +95,11 @@
         UPDATE user set address = #{userAddress} WHERE id = #{id}
     </update>
 
+    <!--修改用户信息age-->
+    <update id="changeProfileAge" parameterType="com.model.User">
+        UPDATE user set age = #{userAge} WHERE id = #{id}
+    </update>
+
     <!--用户绑定机器的Mid-->
     <update id="setMid" parameterType="com.model.User">
         UPDATE user SET mid = #{userMid} WHERE id = #{id}
@@ -99,5 +108,30 @@
     <!--通过手机号和密码进行注册-->
     <insert id="insertUser" parameterType="com.model.User" useGeneratedKeys="true" keyProperty="id" >
         INSERT INTO user (password,phone,type_id,uid) VALUES (#{userPwd}, #{userPhone}, #{t_id}, #{userUid})
+    </insert>
+
+    <!--上传标定数据A-->
+    <update id="upLoadA" parameterType="com.model.User">
+        UPDATE user SET comfort_A = #{userComfortA} WHERE uid = #{userUid}
+    </update>
+
+    <!--上传标定数据B-->
+    <update id="upLoadB" parameterType="com.model.User">
+        UPDATE user SET comfort_B = #{userComfortB} WHERE uid = #{userUid}
+    </update>
+
+    <!--上传标定数据C-->
+    <update id="upLoadC" parameterType="com.model.User">
+        UPDATE user SET comfort_C = #{userComfortC} WHERE uid = #{userUid}
+    </update>
+
+    <!--上传标定数据D-->
+    <update id="upLoadD" parameterType="com.model.User">
+        UPDATE user SET comfort_D = #{userComfortD} WHERE uid = #{userUid}
+    </update>
+
+    <!--上传设备启用日期-->
+    <insert id="firstCalibTime" parameterType="com.model.User">
+        UPDATE user SET first_calibtime = #{userCalibtime} WHERE uid = #{userUid}
     </insert>
 </mapper>
