@@ -149,6 +149,7 @@ public class UserController {
             map.put("time", String.valueOf(users.getTime()));
             map.put("userUid", users.getUserUid());
             map.put("userMid", users.getUserMid());
+            map.put("userAge", users.getUserAge());
             map.put("first_calibtime", users.getUserCalibtime());
             map.put("comfort_A", String.valueOf(users.getUserComfortA()));
             map.put("comfort_B", String.valueOf(users.getUserComfortB()));
