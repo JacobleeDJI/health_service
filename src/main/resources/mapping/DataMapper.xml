@@ -17,7 +17,11 @@
         INSERT INTO data (mid, sequence, aa, bb, cc, dd, time, sync) VALUES (#{mid}, #{sequence}, #{aa}, #{bb}, #{cc}, #{dd}, #{time}, #{sync})
     </insert>
 
-    <select id="queryData" resultMap="t_data">
+    <select id="selectTime" resultMap="t_data" resultType="String">
+        SELECT * FROM data WHERE time = #{time}
+    </select>
+
+    <select id="queryData" resultMap="t_data" >
         SELECT * FROM data
         <where>
             <if test="startTime != null and startTime != '' ">

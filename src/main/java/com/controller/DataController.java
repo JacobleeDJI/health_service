@@ -27,6 +27,8 @@ public class DataController extends SimpleDateFormat {
     @Resource
     private DataService dataService;
 
+
+
     @RequestMapping(value = "/upLoadData", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public Map<String, String> uploadData(String upLoad) throws IOException {
@@ -43,8 +45,11 @@ public class DataController extends SimpleDateFormat {
         for (int i = 0; i < data.size(); i++) {
             String json =  data.getJSONObject(i).toString();
             Data data1 = mapper.readValue(json, Data.class);
-            dataService.upLoadData(data1);
-            temp++;
+            Data data2 = dataService.selectTime(data1.getTime());
+            if (data2 == null){
+                dataService.upLoadData(data1);
+                temp++;
+            }
         }
 
         if (temp == count) {
@@ -57,7 +62,6 @@ public class DataController extends SimpleDateFormat {
             map.put("Result", "Load Failed");
             map.put("status", "400");
             int t = count - temp;
-            map.put("失败条数", String.valueOf(t));
         }
 
         return map;
