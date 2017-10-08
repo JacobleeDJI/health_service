@@ -52,7 +52,7 @@ public class DataController extends SimpleDateFormat {
             }
         }
 
-        if (temp == count) {
+        if (temp != 0) {
             map.put("Result", "All Loaded");
             map.put("status", "200");
         }
