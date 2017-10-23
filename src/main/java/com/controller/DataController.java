@@ -45,10 +45,8 @@ public class DataController extends SimpleDateFormat {
         for (int i = 0; i < data.size(); i++) {
             String json =  data.getJSONObject(i).toString();
             Data data1 = mapper.readValue(json, Data.class);
-            Data data2 = dataService.selectTime(data1.getTime());
-            String mid1 = data1.getMid();
-            String mid2 = data2.getMid();
-            if (data2 == null && mid1 == mid2){
+            Data data2 = dataService.selectTime(data1.getTime(), data1.getMid());
+            if (data2 == null){
                 dataService.upLoadData(data1);
                 temp++;
             }

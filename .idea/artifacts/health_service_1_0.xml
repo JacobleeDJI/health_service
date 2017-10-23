@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="health_service_1.0">
+    <output-path>$PROJECT_DIR$/../APP数据库信息</output-path>
+    <root id="archive" name="health_service_1.0.war">
+      <element id="dir-copy" path="$PROJECT_DIR$" />
+    </root>
+  </artifact>
+</component>

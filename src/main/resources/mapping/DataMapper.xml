@@ -18,7 +18,7 @@
     </insert>
 
     <select id="selectTime" resultMap="t_data" resultType="String">
-        SELECT * FROM data WHERE time = #{time}
+        SELECT * FROM data WHERE time = #{time} AND mid = #{mid}
     </select>
 
     <select id="queryData" resultMap="t_data" >

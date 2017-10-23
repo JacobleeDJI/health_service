@@ -23,7 +23,7 @@ public class DataServiceImpl implements DataService {
 
     public int upLoadData(Data data) { return dataDao.upLoadData(data); }
 
-    public Data selectTime(String time) { return dataDao.selectTime(time); }
+    public Data selectTime(String time, String mid) { return dataDao.selectTime(time, mid); }
 
     public List<Data> getqueryData(@Param("mid") String mid, @Param("startTime") String startTime, @Param("endTime") String endTime) { return dataDao.queryData(mid, startTime, endTime);}
 }
