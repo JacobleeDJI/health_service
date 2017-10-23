@@ -14,5 +14,5 @@ import java.util.List;
 public interface DataDao {
     int upLoadData(Data data);
     List<Data> queryData(@Param("mid") String mid, @Param("startTime") String startTime, @Param("endTime") String endTime);
-    Data selectTime(String time, String mid);
+    Data selectTime(@Param("time") String time, @Param("mid") String mid);
 }
