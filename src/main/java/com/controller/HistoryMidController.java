@@ -36,10 +36,22 @@ public class HistoryMidController {
         if (historyMid != null && historyMid.getUser().getUserMid() != null) {
                 historyMid.setUid(historyMid.getUser().getUserUid());
                 historyMid.setMid(historyMid.getUser().getUserMid());
-                historyMid.setComfortA(historyMid.getUser().getUserComfortA());
-                historyMid.setComfortB(historyMid.getUser().getUserComfortB());
-                historyMid.setComfortC(historyMid.getUser().getUserComfortC());
-                historyMid.setComfortD(historyMid.getUser().getUserComfortD());
+                historyMid.setUserComfortA1(historyMid.getUser().getUserComfortA1());
+                historyMid.setUserComfortA2(historyMid.getUser().getUserComfortA2());
+                historyMid.setUserComfortA3(historyMid.getUser().getUserComfortA3());
+                historyMid.setUserComfortA4(historyMid.getUser().getUserComfortA4());
+                historyMid.setUserComfortB1(historyMid.getUser().getUserComfortB1());
+                historyMid.setUserComfortB2(historyMid.getUser().getUserComfortB2());
+                historyMid.setUserComfortB3(historyMid.getUser().getUserComfortB3());
+                historyMid.setUserComfortB4(historyMid.getUser().getUserComfortB4());
+                historyMid.setUserComfortC1(historyMid.getUser().getUserComfortC1());
+                historyMid.setUserComfortC2(historyMid.getUser().getUserComfortC2());
+                historyMid.setUserComfortC3(historyMid.getUser().getUserComfortC3());
+                historyMid.setUserComfortC4(historyMid.getUser().getUserComfortC4());
+                historyMid.setUserComfortD1(historyMid.getUser().getUserComfortD1());
+                historyMid.setUserComfortD2(historyMid.getUser().getUserComfortD2());
+                historyMid.setUserComfortD3(historyMid.getUser().getUserComfortD3());
+                historyMid.setUserComfortD4(historyMid.getUser().getUserComfortD4());
                 historyMid.setCalibtime(historyMid.getUser().getUserCalibtime());
                 historyMidService.getinsertHistoryMid(historyMid);
                 result.put("status", "200");

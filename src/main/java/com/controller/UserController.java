@@ -116,10 +116,22 @@ public class UserController {
             map.put("userMid", u.getUserMid());
             map.put("userUid", u.getUserUid());
             map.put("first_calibtime", u.getUserCalibtime());
-            map.put("comfort_A", String.valueOf(u.getUserComfortA()));
-            map.put("comfort_B", String.valueOf(u.getUserComfortB()));
-            map.put("comfort_C", String.valueOf(u.getUserComfortC()));
-            map.put("comfort_D", String.valueOf(u.getUserComfortD()));
+            map.put("comfortA_1", String.valueOf(u.getUserComfortA1()));
+            map.put("comfortA_2", String.valueOf(u.getUserComfortA2()));
+            map.put("comfortA_3", String.valueOf(u.getUserComfortA3()));
+            map.put("comfortA_4", String.valueOf(u.getUserComfortA4()));
+            map.put("comfortB_1", String.valueOf(u.getUserComfortB1()));
+            map.put("comfortB_2", String.valueOf(u.getUserComfortB2()));
+            map.put("comfortB_3", String.valueOf(u.getUserComfortB3()));
+            map.put("comfortB_4", String.valueOf(u.getUserComfortB4()));
+            map.put("comfortC_1", String.valueOf(u.getUserComfortC1()));
+            map.put("comfortC_2", String.valueOf(u.getUserComfortC2()));
+            map.put("comfortC_3", String.valueOf(u.getUserComfortC3()));
+            map.put("comfortC_4", String.valueOf(u.getUserComfortC4()));
+            map.put("comfortD_1", String.valueOf(u.getUserComfortD1()));
+            map.put("comfortD_2", String.valueOf(u.getUserComfortD2()));
+            map.put("comfortD_3", String.valueOf(u.getUserComfortD3()));
+            map.put("comfortD_4", String.valueOf(u.getUserComfortD4()));
             return map;
         }
         map.put("status", "400");
@@ -151,10 +163,22 @@ public class UserController {
             map.put("userMid", users.getUserMid());
             map.put("userAge", users.getUserAge());
             map.put("first_calibtime", users.getUserCalibtime());
-            map.put("comfort_A", String.valueOf(users.getUserComfortA()));
-            map.put("comfort_B", String.valueOf(users.getUserComfortB()));
-            map.put("comfort_C", String.valueOf(users.getUserComfortC()));
-            map.put("comfort_D", String.valueOf(users.getUserComfortD()));
+            map.put("comfortA_1", String.valueOf(users.getUserComfortA1()));
+            map.put("comfortA_2", String.valueOf(users.getUserComfortA2()));
+            map.put("comfortA_3", String.valueOf(users.getUserComfortA3()));
+            map.put("comfortA_4", String.valueOf(users.getUserComfortA4()));
+            map.put("comfortB_1", String.valueOf(users.getUserComfortB1()));
+            map.put("comfortB_2", String.valueOf(users.getUserComfortB2()));
+            map.put("comfortB_3", String.valueOf(users.getUserComfortB3()));
+            map.put("comfortB_4", String.valueOf(users.getUserComfortB4()));
+            map.put("comfortC_1", String.valueOf(users.getUserComfortC1()));
+            map.put("comfortC_2", String.valueOf(users.getUserComfortC2()));
+            map.put("comfortC_3", String.valueOf(users.getUserComfortC3()));
+            map.put("comfortC_4", String.valueOf(users.getUserComfortC4()));
+            map.put("comfortD_1", String.valueOf(users.getUserComfortD1()));
+            map.put("comfortD_2", String.valueOf(users.getUserComfortD2()));
+            map.put("comfortD_3", String.valueOf(users.getUserComfortD3()));
+            map.put("comfortD_4", String.valueOf(users.getUserComfortD4()));
             return map;
         }
         map.put("status", "400");
@@ -310,12 +334,15 @@ public class UserController {
 //  返回值：状态码
     @RequestMapping(value = "/upLoadComfortA", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public Map<String, String> uploadcomfortA(String userUid, double userComfortA) {
+    public Map<String, String> uploadcomfortA(String userUid, double userComfortA1,double userComfortA2,double userComfortA3,double userComfortA4) {
         log.info("上传定标数据A");
         User u = userService.getUserByUid(userUid);
         Map<String, String> map = new HashMap<>();
         if (u != null) {
-            u.setUserComfortA(userComfortA);
+            u.setUserComfortA1(userComfortA1);
+            u.setUserComfortA2(userComfortA2);
+            u.setUserComfortA3(userComfortA3);
+            u.setUserComfortA4(userComfortA4);
             userService.setupLoadA(u);
             map.put("status", "200");
             return map;
@@ -330,12 +357,15 @@ public class UserController {
 //  返回值：状态码
     @RequestMapping(value = "/upLoadComfortB", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public Map<String, String> uploadcomfortB(String userUid, double userComfortB) {
+    public Map<String, String> uploadcomfortB(String userUid, double userComfortB1,double userComfortB2,double userComfortB3,double userComfortB4) {
         log.info("上传定标数据B");
         User u = userService.getUserByUid(userUid);
         Map<String, String> map = new HashMap<>();
         if (u != null) {
-            u.setUserComfortB(userComfortB);
+            u.setUserComfortB1(userComfortB1);
+            u.setUserComfortB2(userComfortB2);
+            u.setUserComfortB3(userComfortB3);
+            u.setUserComfortB4(userComfortB4);
             userService.setupLoadB(u);
             map.put("status", "200");
             return map;
@@ -350,12 +380,15 @@ public class UserController {
 //  返回值：状态码
     @RequestMapping(value = "/upLoadComfortC", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public Map<String, String> uploadcomfortC(String userUid, double userComfortC) {
+    public Map<String, String> uploadcomfortC(String userUid, double userComfortC1,double userComfortC2,double userComfortC3,double userComfortC4) {
         log.info("上传定标数据C");
         User u = userService.getUserByUid(userUid);
         Map<String, String> map = new HashMap<>();
         if (u != null) {
-            u.setUserComfortC(userComfortC);
+            u.setUserComfortC1(userComfortC1);
+            u.setUserComfortC2(userComfortC2);
+            u.setUserComfortC3(userComfortC3);
+            u.setUserComfortC4(userComfortC4);
             userService.setupLoadC(u);
             map.put("status", "200");
             return map;
@@ -370,12 +403,15 @@ public class UserController {
 //  返回值：状态码
     @RequestMapping(value = "/upLoadComfortD", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public Map<String, String> uploadcomfortD(String userUid, double userComfortD) {
+    public Map<String, String> uploadcomfortD(String userUid, double userComfortD1,double userComfortD2,double userComfortD3,double userComfortD4) {
         log.info("上传定标数据D");
         User u = userService.getUserByUid(userUid);
         Map<String, String> map = new HashMap<>();
         if (u != null) {
-            u.setUserComfortD(userComfortD);
+            u.setUserComfortD1(userComfortD1);
+            u.setUserComfortD2(userComfortD2);
+            u.setUserComfortD3(userComfortD3);
+            u.setUserComfortD4(userComfortD4);
             userService.setupLoadD(u);
             map.put("status", "200");
             return map;
