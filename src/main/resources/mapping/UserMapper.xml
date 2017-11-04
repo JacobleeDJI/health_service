@@ -17,10 +17,22 @@
         <result column="mac" property="userMac" jdbcType="VARCHAR"/>
         <result column="age" property="userAge" jdbcType="VARCHAR"/>
         <result column="first_calibtime" property="userCalibtime" jdbcType="DATE"/>
-        <result column="comfort_A" property="userComfortA" jdbcType="DOUBLE"/>
-        <result column="comfort_B" property="userComfortB" jdbcType="DOUBLE"/>
-        <result column="comfort_C" property="userComfortC" jdbcType="DOUBLE"/>
-        <result column="comfort_D" property="userComfortD" jdbcType="DOUBLE"/>
+        <result column="comfortA_1" property="userComfortA1" jdbcType="DOUBLE"/>
+        <result column="comfortA_2" property="userComfortA2" jdbcType="DOUBLE"/>
+        <result column="comfortA_3" property="userComfortA3" jdbcType="DOUBLE"/>
+        <result column="comfortA_4" property="userComfortA4" jdbcType="DOUBLE"/>
+        <result column="comfortB_1" property="userComfortB1" jdbcType="DOUBLE"/>
+        <result column="comfortB_2" property="userComfortB2" jdbcType="DOUBLE"/>
+        <result column="comfortB_3" property="userComfortB3" jdbcType="DOUBLE"/>
+        <result column="comfortB_4" property="userComfortB4" jdbcType="DOUBLE"/>
+        <result column="comfortC_1" property="userComfortC1" jdbcType="DOUBLE"/>
+        <result column="comfortC_2" property="userComfortC2" jdbcType="DOUBLE"/>
+        <result column="comfortC_3" property="userComfortC3" jdbcType="DOUBLE"/>
+        <result column="comfortC_4" property="userComfortC4" jdbcType="DOUBLE"/>
+        <result column="comfortD_1" property="userComfortD1" jdbcType="DOUBLE"/>
+        <result column="comfortD_2" property="userComfortD2" jdbcType="DOUBLE"/>
+        <result column="comfortD_3" property="userComfortD3" jdbcType="DOUBLE"/>
+        <result column="comfortD_4" property="userComfortD4" jdbcType="DOUBLE"/>
     </resultMap>
 
     <resultMap id="doc" type="com.model.User" extends="t_user">
@@ -112,24 +124,51 @@
 
     <!--上传标定数据A-->
     <update id="upLoadA" parameterType="com.model.User">
-        UPDATE user SET comfort_A = #{userComfortA} WHERE uid = #{userUid}
+        UPDATE user SET
+
+        comfortA_1 = #{userComfortA1},
+        comfortA_2 = #{userComfortA2},
+        comfortA_3 = #{userComfortA3},
+        comfortA_4 = #{userComfortA4}
+
+        WHERE uid = #{userUid}
     </update>
 
     <!--上传标定数据B-->
     <update id="upLoadB" parameterType="com.model.User">
-        UPDATE user SET comfort_B = #{userComfortB} WHERE uid = #{userUid}
+        UPDATE user SET
+
+        comfortB_1 = #{userComfortB1},
+        comfortB_2 = #{userComfortB2},
+        comfortB_3 = #{userComfortB3},
+        comfortB_4 = #{userComfortB4}
+
+        WHERE uid = #{userUid}
     </update>
 
     <!--上传标定数据C-->
     <update id="upLoadC" parameterType="com.model.User">
-        UPDATE user SET comfort_C = #{userComfortC} WHERE uid = #{userUid}
+        UPDATE user SET
+
+        comfortC_1 = #{userComfortC1},
+        comfortC_2 = #{userComfortC2},
+        comfortC_3 = #{userComfortC3},
+        comfortC_4 = #{userComfortC4}
+
+        WHERE uid = #{userUid}
     </update>
 
     <!--上传标定数据D-->
     <update id="upLoadD" parameterType="com.model.User">
-        UPDATE user SET comfort_D = #{userComfortD} WHERE uid = #{userUid}
-    </update>
+        UPDATE user SET
 
+        comfortD_1 = #{userComfortD1},
+        comfortD_2 = #{userComfortD2},
+        comfortD_3 = #{userComfortD3},
+        comfortD_4 = #{userComfortD4}
+
+        WHERE uid = #{userUid}
+    </update>
     <!--上传设备启用日期-->
     <insert id="firstCalibTime" parameterType="com.model.User">
         UPDATE user SET first_calibtime = #{userCalibtime} WHERE uid = #{userUid}

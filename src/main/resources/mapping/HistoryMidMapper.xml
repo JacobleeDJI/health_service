@@ -7,10 +7,22 @@
         <result column="mid1" property="mid1" jdbcType="VARCHAR"/>
         <result column="mid2" property="mid2" jdbcType="VARCHAR"/>
         <result column="mid3" property="mid3" jdbcType="VARCHAR"/>
-        <result column="comfortA" property="compfortA" jdbcType="DOUBLE"/>
-        <result column="comfortB" property="compfortB" jdbcType="DOUBLE"/>
-        <result column="comfortC" property="compfortC" jdbcType="DOUBLE"/>
-        <result column="comfortD" property="compfortD" jdbcType="DOUBLE"/>
+        <result column="comfortA_1" property="userComfortA1" jdbcType="DOUBLE"/>
+        <result column="comfortA_2" property="userComfortA2" jdbcType="DOUBLE"/>
+        <result column="comfortA_3" property="userComfortA3" jdbcType="DOUBLE"/>
+        <result column="comfortA_4" property="userComfortA4" jdbcType="DOUBLE"/>
+        <result column="comfortB_1" property="userComfortB1" jdbcType="DOUBLE"/>
+        <result column="comfortB_2" property="userComfortB2" jdbcType="DOUBLE"/>
+        <result column="comfortB_3" property="userComfortB3" jdbcType="DOUBLE"/>
+        <result column="comfortB_4" property="userComfortB4" jdbcType="DOUBLE"/>
+        <result column="comfortC_1" property="userComfortC1" jdbcType="DOUBLE"/>
+        <result column="comfortC_2" property="userComfortC2" jdbcType="DOUBLE"/>
+        <result column="comfortC_3" property="userComfortC3" jdbcType="DOUBLE"/>
+        <result column="comfortC_4" property="userComfortC4" jdbcType="DOUBLE"/>
+        <result column="comfortD_1" property="userComfortD1" jdbcType="DOUBLE"/>
+        <result column="comfortD_2" property="userComfortD2" jdbcType="DOUBLE"/>
+        <result column="comfortD_3" property="userComfortD3" jdbcType="DOUBLE"/>
+        <result column="comfortD_4" property="userComfortD4" jdbcType="DOUBLE"/>
         <result column="first_calib" property="calibtime" jdbcType="DATE"/>
     </resultMap>
 
@@ -31,17 +43,39 @@
             <result column="mac" property="userMac" jdbcType="VARCHAR"/>
             <result column="age" property="userAge" jdbcType="VARCHAR"/>
             <result column="first_calibtime" property="userCalibtime" jdbcType="DATE"/>
-            <result column="comfort_A" property="userComfortA" jdbcType="DOUBLE"/>
-            <result column="comfort_B" property="userComfortB" jdbcType="DOUBLE"/>
-            <result column="comfort_C" property="userComfortC" jdbcType="DOUBLE"/>
-            <result column="comfort_D" property="userComfortD" jdbcType="DOUBLE"/>
+            <result column="comfortA_1" property="userComfortA1" jdbcType="DOUBLE"/>
+            <result column="comfortA_2" property="userComfortA2" jdbcType="DOUBLE"/>
+            <result column="comfortA_3" property="userComfortA3" jdbcType="DOUBLE"/>
+            <result column="comfortA_4" property="userComfortA4" jdbcType="DOUBLE"/>
+            <result column="comfortB_1" property="userComfortB1" jdbcType="DOUBLE"/>
+            <result column="comfortB_2" property="userComfortB2" jdbcType="DOUBLE"/>
+            <result column="comfortB_3" property="userComfortB3" jdbcType="DOUBLE"/>
+            <result column="comfortB_4" property="userComfortB4" jdbcType="DOUBLE"/>
+            <result column="comfortC_1" property="userComfortC1" jdbcType="DOUBLE"/>
+            <result column="comfortC_2" property="userComfortC2" jdbcType="DOUBLE"/>
+            <result column="comfortC_3" property="userComfortC3" jdbcType="DOUBLE"/>
+            <result column="comfortC_4" property="userComfortC4" jdbcType="DOUBLE"/>
+            <result column="comfortD_1" property="userComfortD1" jdbcType="DOUBLE"/>
+            <result column="comfortD_2" property="userComfortD2" jdbcType="DOUBLE"/>
+            <result column="comfortD_3" property="userComfortD3" jdbcType="DOUBLE"/>
+            <result column="comfortD_4" property="userComfortD4" jdbcType="DOUBLE"/>
         </collection>
     </resultMap>
 
     <!--将MID和对应的UID存储到历史表中-->
     <insert id="insertHistoryMid" parameterType="com.model.HistoryMid">
-        INSERT INTO res_history (uid, mid, comfortA, comfortB, comfortC, comfortD, first_calib)
-        VALUES (#{uid}, #{mid}, #{comfortA}, #{comfortB}, #{comfortC}, #{comfortD}, #{calibtime})
+        INSERT INTO res_history (uid, mid,
+        comfortA_1, comfortA_2, comfortA_3,comfortA_4,
+        comfortB_1,comfortB_2,comfortB_3,comfortB_4,
+        comfortC_1,comfortC_2,comfortC_3,comfortC_4,
+        comfortD_1,comfortD_2,comfortD_3,comfortD_4,
+        first_calib)
+        VALUES (#{uid}, #{mid},
+        #{userComfortA1}, #{userComfortA2}, #{userComfortA3},#{userComfortA4},
+        #{userComfortB1}, #{userComfortB2}, #{userComfortB3},#{userComfortB4},
+        #{userComfortC1}, #{userComfortC2}, #{userComfortC3},#{userComfortC4},
+        #{userComfortD1}, #{userComfortD2}, #{userComfortD3},#{userComfortD4},
+        #{calibtime})
     </insert>
 
     <select id="selectOldMid" resultMap="user">
