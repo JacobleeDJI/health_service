@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.PostsDao">
+    <resultMap id="t_posts" type="com.model.Posts">
+        <result column="p_id" property="p_id" jdbcType="VARCHAR"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="author_id" property="author_id" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="image" property="image" jdbcType="VARCHAR"/>
+        <result column="target_id" property="target_id" jdbcType="VARCHAR"/>
+        <result column="time" property="time" jdbcType="DATE"/>
+        <result column="type_id" property="type_id" jdbcType="VARCHAR"/>
+        <association property="user" javaType="com.model.User">
+            <result column="id" property="id" jdbcType="VARCHAR"/>
+            <result column="type_id" property="t_id" jdbcType="TINYINT"/>
+            <result column="password" property="userPwd" jdbcType="VARCHAR"/>
+            <result column="name" property="userName" jdbcType="VARCHAR"/>
+            <result column="gender" property="userGender" jdbcType="TINYINT"/>
+            <result column="email" property="userEmail" jdbcType="VARCHAR"/>
+            <result column="phone" property="userPhone" jdbcType="VARCHAR"/>
+            <result column="address" property="userAddress" jdbcType="VARCHAR"/>
+            <result column="time" property="Time" jdbcType="DATE"/>
+            <result column="comfort" property="userComfort" jdbcType="DOUBLE"/>
+            <result column="uid" property="userUid" jdbcType="VARCHAR"/>
+            <result column="mid" property="userMid" jdbcType="VARCHAR"/>
+        </association>
+    </resultMap>
+
+    <insert id="sendPost" parameterType="com.model.Posts">
+        INSERT INTO posts (author_id, title, content, target_id, type_id) VALUES (#{author_id}, #{title}, #{content}, #{target_id}, #{type_id})
+    </insert>
+
+    <select id="getPostDetail" resultMap="t_posts">
+        SELECT * FROM posts p INNER JOIN user u ON p.author_id = u.id WHERE p_id = #{p_id}
+    </select>
+
+    <select id="getPostList" resultMap="t_posts">
+        SELECT * FROM posts p INNER JOIN user u ON p.author_id = u.id
+         <where>
+             p.type_id = 0
+         </where>
+         limit  #{startNumber},#{limitNumber}
+    </select>
+
+    <select id="getCommentList" resultMap="t_posts">
+        SELECT * FROM posts p INNER  JOIN user u ON p.author_id = u.id
+        <where>
+            target_id is not NULL AND target_id = #{target_id}
+        </where>
+        limit #{startNumber}, #{limitNumber}
+    </select>
+</mapper>
